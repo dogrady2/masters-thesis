@@ -9,11 +9,12 @@
 \def\fileversion{v1.0} \def\filedate{2018/07/20}
 %% Package and Class "uiucthesis2009" for use with LaTeX2e.
 \documentclass[edeposit,fullpage]{uiucthesis2009}
-
+\usepackage[acronym,toc]{glossaries}
+\include{acros}
 \begin{document}
 
-\title{Investigation of Pellet Clad Interaction during Load-Follow Operation \\
-       in a Pressurized Water Reactor using VERA-CS}
+\title{Investigation of Pellet Clad Interaction during Load-Follow\\
+       Operation in a Pressurized Water Reactor using VERA-CS}
 \author{Daniel John O'Grady}
 \department{Nuclear, Plasma, and Radiological Engineering}
 \schools{B.S., University of Illinois at Urbana-Champaign, 2017}
@@ -89,83 +90,62 @@ process with me, always offering support and love.
 \end{symbollist}
 
 \mainmatter
-\chapter{This world}
-\section{Of the Nature of Flatland}
+\chapter{Introduction}
 
-I call our world Flatland, not because we call it so, but to make its
-nature clearer to you, my happy readers, who are privileged to live in
-Space.
+In the \gls{US}, nuclear power generation has high fixed costs and low variable costs. 
+As a result, utilities have traditionally sought to operate nuclear stations at full power from \gls{BOC} to \gls{EOC}. 
+More recently, the deregulation of the energy market and the emergence of intermittent renewable energy sources have caused load-follow operation to become a more attractive option for nuclear generation. 
 
-Imagine a vast sheet of paper on which straight Lines, Triangles,
-Squares, Pentagons, Hexagons, and other figures, instead of remaining
-fixed in their places, move freely about, on or in the surface, but
-without the power of rising above or sinking below it, very much like
-shadows--only hard with luminous edges--and you will then have a pretty
-correct notion of my country and countrymen.  Alas, a few years ago, I
-should have said "my universe:"  but now my mind has been opened to
-higher views of things.
+The deregulation of the energy market has forced utilities to compete against each other to sell electricity within a region.
+The beneficiary of this competition are the customers, who are guaranteed fair prices for electricity and will not be footing the bill for an inefficient/uneconomical utility project. %need citation
+Nuclear stations, with low variable costs and high fixed costs, have typically been able to economically compete within deregulated markets because the typical plant lifetime of at least 20 years allows owners to spread out the fixed costs.
+Recently, the low price of natural gas and government subsidized renewable energy sources, such as wind and solar, have made nuclear stations appear inefficient.   
 
-In such a country, you will perceive at once that it is impossible that
-there should be anything of what you call a "solid" kind; but I dare
-say you will suppose that we could at least distinguish by sight the
-Triangles, Squares, and other figures, moving about as I have described
-them.  On the contrary, we could see nothing of the kind, not at least
-so as to distinguish one figure from another.  Nothing was visible, nor
-could be visible, to us, except Straight Lines; and the necessity of
-this I will speedily demonstrate.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Background and Motivation}
 
-Place a penny on the middle of one of your tables in Space; and leaning
-over it, look down upon it.  It will appear a circle.
+In 2016, the \gls{US} had approximately 7\% of its total electricity generation coming from wind and solar power \cite{u.s_energy_information_administration_electricity_2016}. 
+This share is likely to increase as the \gls{US} continues to move away from fossil fuels and towards a "greener" energy future.
+As a result of this increase, in combination with the deregulation of the energy market, the price of electricity has become volatile. 
+At certain times, the price of selling electricity within a region can even become negative, due a sudden increase in renewable energy output and a low market demand \cite{paraschiv_impact_2014}. 
+In some areas, negative electricity prices are further increased due to the fact that large generating facilities would rather sell at a loss to avoid decreasing their power level. 
+This preference is caused by the high capital cost and relatively low variable costs of large generating facilities \cite{lokhov_load-following_2011}.
 
-But now, drawing back to the edge of the table, gradually lower your
-eye (thus bringing yourself more and more into the condition of the
-inhabitants of Flatland), and you will find the penny becoming more and
-more oval to your view, and at last when you have placed your eye
-exactly on the edge of the table (so that you are, as it were, actually
-a Flatlander) the penny will then have ceased to appear oval at all,
-and will have become, so far as you can see, a straight line.
+Nuclear stations are typically one of these large generating facilities.
+As a result of the large construction costs and the fixed number of staff members that must be on site at all times, most utilities prefer to keep a reactor at full power, as it is easiest to maintain constant power. 
+If instead of remaining at full power, a nuclear station operated in load-following mode, could this increase the efficiency of the plant?
+During load-follow operation, a nuclear station will vary its power output in response to the anticipated demand to better suit the market needs, stabilizing the price of electricity.
+Theoretically, the current operating plants were all designed with the maneuverability to respond to such change in demand \cite{lokhov_technical_2011}.
+In fact, many of the reactors in France already participate in load-following maneuvers with the help of grey control rods \cite{lokhov_technical_2011}.
+Grey control rods are similar to standard \gls{PWR} control rods but have significantly less rod worth \cite{yousefpour_improvement_2000}.
+The low rod worth allows them to be used for reactivity control without putting significant stress on the surrounding fuel. 
+In the \gls{US}, grey rods are not present in \gls{PWR}, increasing the complexity of load-follow operation \cite{lokhov_technical_2011}.
+  
+To participate in load-follow operation in the \gls{US}, a \gls{PWR} can use the critical boron concentration to modify the power level while making minor control rod insertion to manage the core \gls{AO} \cite{lokhov_technical_2011}.  
+This practice can lead to significant changes in local power levels throughout the core.
+Significant changes in local power can cause fuel to swell or contract, due to thermal expansion \cite{gartner_power_1984}. %need citation
+If a utility chooses to ramp down the reactor during times of low demand, or high supply, the fuel pellets will contract allowing the cladding to slowly creep down.
+When the decision is made to return the reactor to a higher power level, the rate at which the power can be increased is limited due to the thermal expansion of the fuel pellet \cite{gartner_power_1984}. %need citation
+If enough time has passed at low power and the cladding has crept down on the fuel pellet, a sudden expansion of the fuel pellet has the potential to cause fuel failure.
+As a result, studies must be performed on the maximum power ramp rate to determine if load-follow operation introduces a significant risk to all fuel rods.
 
-The same thing would happen if you were to treat in the same way a
-Triangle, or a Square, or any other figure cut out from pasteboard.  As
-soon as you look at it with your eye on the edge of the table, you will
-find that it ceases to appear to you as a figure, and that it becomes
-in appearance a straight line.  Take for example an equilateral
-Triangle--who represents with us a Tradesman of the respectable class.
-Figure 1 represents the Tradesman as you would see him while you were
-bending over him from above; figures 2 and 3 represent the Tradesman,
-as you would see him if your eye were close to the level, or all but on
-the level of the table; and if your eye were quite on the level of the
-table (and that is how we see him in Flatland) you would see nothing
-but a straight line.
+In this study, the market conditions under which it is economic for a \gls{PWR} to perform load-follow power maneuvers were investigated. 
+As a baseload energy source, current market conditions are causing the premature shutdown of some nuclear power plants \cite{_exelon_????}. 
+If load-follow power maneuvers are possible for these plants, they can become more competitive in their local market, possibly allowing them to remain in operation without government intervention.
+Although, improving the economics of a nuclear reactor is a strong driving force for this study, it is also important to improve the compatibility of nuclear power with renewable energy sources. 
+In the absence of energy storage, a complete shift away from fossil fuels will require renewable energy sources, and hopefully nuclear power, to provide all of the energy on the grid.
+If it can be proven that traditional \gls{PWR}s can safely and economically respond to the changes in renewable energy output, the shift away from fossil fuel can be expedited. 
+In addition, nuclear power working together with renewable energy sources can positively impact the public's opinion on nuclear power.
 
-When I was in Spaceland I heard that your sailors have very similar
-experiences while they traverse your seas and discern some distant
-island or coast lying on the horizon.  The far-off land may have bays,
-forelands, angles in and out to any number and extent; yet at a
-distance you see none of these (unless indeed your sun shines bright
-upon them revealing the projections and retirements by means of light
-and shade), nothing but a grey unbroken line upon the water.
+\section{Literature Review}
 
-Well, that is just what we see when one of our triangular or other
-acquaintances comes towards us in Flatland.  As there is neither sun
-with us, nor any light of such a kind as to make shadows, we have none
-of the helps to the sight that you have in Spaceland.  If our friend
-comes closer to us we see his line becomes larger; if he leaves us it
-becomes smaller; but still he looks like a straight line; be he a
-Triangle, Square, Pentagon, Hexagon, Circle, what you will--a straight
-Line he looks and nothing else.
 
-You may perhaps ask how under these disadvantagous circumstances we are
-able to distinguish our friends from one another: but the answer to
-this very natural question will be more fitly and easily given when I
-come to describe the inhabitants of Flatland.  For the present let me
-defer this subject, and say a word or two about the climate and houses
-in our country.
+\chapter{PWR1}
 
-\include{1-introduction}
-\include{2-related}
-\include{3-model}
-\include{4-predictions}
+\chapter{VERA-CS}
+
+\chapter{Results and Discussion}
 
 \chapter{Conclusions}
 
