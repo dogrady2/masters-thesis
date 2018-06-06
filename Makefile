@@ -6,7 +6,7 @@ all: all-via-pdf
 
 all-via-pdf: $(manuscript).tex $(references)
 	pdflatex  "$(manuscript).tex"
-	#bibtex $(manuscript).aux
+	bibtex $(manuscript).aux
 	pdflatex  "$(manuscript).tex"
 
 all-via-dvi: 
