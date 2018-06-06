@@ -1,11 +1,3 @@
-%%
-%% This is file `thesis-ex.tex',
-%% generated with the docstrip utility.
-%%
-%% The original source files were:
-%%
-%% uiucthesis2009.dtx  (with options: `example')
-%% 
 \def\fileversion{v1.0} \def\filedate{2018/07/20}
 %% Package and Class "uiucthesis2009" for use with LaTeX2e.
 \documentclass[edeposit,fullpage]{uiucthesis2009}
@@ -133,24 +125,44 @@ Changes in local power can cause fuel to swell or contract, due to thermal expan
 If a utility chooses to ramp down the reactor during times of low demand, or high supply, the fuel pellets will contract.
 When the decision is made to return the reactor back to full power, the rate at which the power can be increased is limited by the thermal expansion of the fuel pellets \cite{gartner_power_1984}.
 A sudden expansion of the fuel pellet has the potential to exert additional stress on the cladding, commonly referred to as \gls{PCMI}.
-\gls{PCMI} can lead to fuel failure by {PCI}, and has been extensively investigated since the early 1970s.
+\gls{PCMI} can lead to fuel failure by \gls{PCI}, and has been extensively investigated since the early 1970s.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Pellet Clad Interaction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 In the early 1970's a string of fuel failures in \gls{BWR} led to the first classification of \gls{PCI} induced fuel failure.  
 Shortly after, \gls{PCI} induced fuel failures were found in \gls{PWR} and determined to be an inherent problem in \gls{LWR} zircaloy based fuels. %Find citation
-To reduce the risk of failure, fuel manufactures made design modifications and began to provide power ramping guidelines \cite{kennard_PCI_2016}.
+The majority of these failures were observed during or shortly after power maneuvers from hot zero power.
+To reduce the risk of failure, fuel manufactures made design modifications and began to provide power ramping guidelines \cite{kennard_pci_2016}.
 These ramp guideline were particularly conservative and focused primarily on \gls{BOC} power ramps. 
-Since then, \gls{PCI} has been extensively studied in order to increase the efficiency of reactor operation and minimize the number of fuel failures.
+Since then, \gls{PCI} has been extensively studied in order to increase the efficiency of reactor start-up and minimize the number of fuel failures.
+%In order to extend the results of these studies to load follow operation, the driving forces of \gls{PCI} must be analyzed to determine their significance mid cycle power ramps.
  
 \gls{PCI} induced fuel failure is the result of \gls{PCMI} and environmental contributions.
-\gls{PCMI} is best described as the material interaction at the pellet-clad interface which creates a stress state on the fuel cladding \cite{kennard_PCI_2016}.
-In the presence of an aggressive local chemical environment, "\gls{PCI}-SCC", or a \gls{MPS}, "\gls{PCI}-\gls{MPS}", \gls{PCMI}
-In the absence of fuel/cladding defects, it is the primary cause of fuel failure during standard operation of a \gls{PWR}. % Need Citation
-\gls{PCI} is a result of fuel 
+\gls{PCMI} is best described as the material interaction at the pellet-clad interface which creates a stress state on the fuel cladding \cite{kennard_pci_2016}.
+This material interaction is commonly caused by the thermal expansion of $UO_2$ fuel pellets during changes in power.
+Oguma \cite{oguma_cracking_1983} found that a fuel pellets radius changes exponentially with its \gls{lhr}, thus large changes in power cause the fuel pellet to contact and strain the cladding.
+In addition to the mechanical stress being exerted on the cladding, environmental contributions, chemical or geometrical in nature, have an adverse effect on the claddings integrity.
+Chemical environments arise from the release of fission products from the fuel pellet.
+Iodine and cadmium-in-cesium are considered to be the most corrosive fission products released from the pellet. %need citation
+In the presence of prolonged \gls{PCMI}, the corrosive chemical environment causes inter granular crack propagation, or \gls{SCC}, through the zircaloy based cladding.
+This type of cladding failure is commonly referred to as \gls{PCI}-\gls{SCC}, or "classical \gls{PCI}."
 
-A $UO_2$ fuel pellets radius is a strong function of power, quantified using the pellet's \gls{lhr}, and exposure.
+Geometric contributions to \gls{PCI} are a result of irregularities in the fuel pellet shape.
+Typical \gls{LWR} fuel pellets are ceramic $UO_2$ cylinder with a height of approximately 1 cm and dishes and chamfers on the top and bottom of the pellet.
+Hundreds of these pellets are stacked into a single fuel, with approximately 60,000 fuel rods in a \gls{LWR} core.
+The shear quantity of fuel pellets ordered by a utility makes it impossible for a fuel vendor to ensure no pellet has a defect.
+The most common defect is a \gls{MPS}, where part of the fuel pellet has chipped off during manufacturing.
+This chip causes asymmetric expansion of the pellet during power maneuvers leading to an increased local stress on the fuel cladding. 
+If this stress exceeds the yield stress of the cladding, brittle failure is likely to occur.
+This type of cladding failure is commonly referred to as \gls{PCI}-\gls{MPS}, as the missing surface is the critical feature in causing the failure.
+
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conditioned Power}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
