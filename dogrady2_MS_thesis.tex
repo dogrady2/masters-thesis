@@ -215,12 +215,12 @@ Additionally, it highlights the need for a coupled multiphysics approach as the 
 %%%%%%
 %Third Paper
 %%%%%%
-One of the computational codes that attempts to incorporate this multiphysics approach is Falcon. %Need citation
-Falcon is a fully coupled, thermo-mechanical, two dimensional finite element computer code being developed by \gls{EPRI}.
-Building on the material properties provided in MATPRO, Falcon has the ability to simulate $UO_2$ pellet relocation, fission gas release and zircaloy cladding thermal creep.
+One of the computational codes that attempts to incorporate this multiphysics approach is FALCON. %Need citation
+FALCON is a fully coupled, thermo-mechanical, two dimensional finite element computer code being developed by \gls{EPRI}.
+Building on the material properties provided in MATPRO, FALCON has the ability to simulate $UO_2$ pellet relocation, fission gas release and zircaloy cladding thermal creep.
 
-Falcon has been extensively benchmarked and is commonly used by contractors and utilities to mitigate the risk of \gls{PCI} induced fuel failure.
-Lyon et al. \cite{lyon_pci_2009} used Falcon in order to determine a criteria for mitigating \gls{PCI} induced fuel failure during power ramps.
+FALCON has been extensively benchmarked and is commonly used by contractors and utilities to mitigate the risk of \gls{PCI} induced fuel failure.
+Lyon et al. \cite{lyon_pci_2009} used FALCON in order to determine a criteria for mitigating \gls{PCI} induced fuel failure during power ramps.
 The authors point out that power ramp rate restrictions, which are normally set by fuel vendors, and power conditioning, the practice of taking intermediate holds at constant power, are not reliable at mitigating the risk of \gls{PCI}. 
 Rather, these practices lead to restrictive constraints on plant operation.
 
@@ -233,17 +233,29 @@ In its place they propose a mechanistic approach that incorporates \gls{PCMI} an
 %
 %
 
-In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the studsvik ramp program using Falcon.
+In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the Studsvik Over Ramp, Super Ramp and Trans Ramp IV program, as well as, rods from a CEA/OSIRIS ramp program using FALCON.
 These simulations were broken into three parts, first a steady state two dimensional, R-Z, depletion simulation is performed using the power histories of each rod.
 The results of these simulations are then used as the initial condition for transient R-Z simulations of the different power ramps under investigation.
 Finally, an R-$\theta$ model containing discrete fuel cracks is created for the axial location which experienced the highest R-Z hoop stress.
 This simulation provides the fuel pins maximum clad hoop stress and \gls{CDI} which can then be used to determine a threshold criteria.
+
+After validating the steady state simulations against \gls{PIE} measurements, Lyon et al. performed the transient analysis for all of the fuel rods. 
+The power history of fuel rod Q11/1, along with the maximum cladding hoop stress and \gls{CDI} are shown in Figure \ref{fig:paper_3_res}.
+It is observed that the \gls{CDI} only changes during sharp power ramps while the hoop stress more closely follows the power profile.
+
+Using the results of all 14 fuel rods, the authors established a statistical failure criteria using both hoop stress and \gls{CDI}.
+A 550 MPa maximum clad hoop stress  and a \gls{CDI} of 5.85 were determined to signify a 50\% chance of rod failure.
+Using the 50\% chance as a hard cut off between non-failed and failed rods, the authors evaluated how each of the criteria performed using the 14 fuel rods.
+The peak stress was able to corrected predict the behavior of eight out of the 14 fuel rods while the \gls{CDI} predicted the behavior of 13 out of the 14 rods.
+Although this work does show the superiority of a \gls{CDI} based criteria, the training set and validation set are considerably small.
+Additionally, the power ramps used during the test program are extreme and are unlikely to be performed during standard operation.
+As a result further validation is needed for a \gls{CDI} based criteria.
  
 \begin{figure}
 \begin{tabular}{cc}
 \includegraphics[width=0.5\linewidth]{./Figures/lyon_image_6.JPG} & \includegraphics[width=0.5\linewidth]{./Figures/lyon_image_7.JPG}
 \end{tabular}
-\caption{The Power history (left), Falcon predicted hoop stress and Falcon predicted \gls{CDI} for Q11/1 of the Studsvik ramp program \cite{lyon_pci_2009}}
+\caption{The Power history (left), Falcon predicted hoop stress and Falcon predicted CDI (right) for Q11/1 of the Studsvik ramp program \cite{lyon_pci_2009}}
 \label{fig:paper_3_res}
 \end{figure}
 %%%%%%
