@@ -2,6 +2,7 @@
 %% Package and Class "uiucthesis2009" for use with LaTeX2e.
 \documentclass[edeposit,fullpage]{uiucthesis2009}
 \usepackage[acronym,toc]{glossaries}
+\usepackage{graphicx}
 \include{acros}
 \begin{document}
 
@@ -183,7 +184,6 @@ Cox goes on to highlight the importance of a corrosive agent at causing \gls{PCI
 To minimize the risk of \gls{PCI}, Cox emphasized the importance of fuel conditioning or holds at intermediate power during large power ramps.
 Fuel conditioning allows the cladding to relieve some of the stress experienced during the initial ramp while also influencing the chemical environment.
 Together these effects reduce the propagation of cracks through the cladding surfaces.
-%need more information on what else he did
 %%%%%%
 
 %%%%%%
@@ -228,6 +228,24 @@ Another criteria that is commonly suggested is the implementation of a stress ba
 The authors argue that stress based thresholds are unable to distinguish between failed and non failed fuel rods, leading to a conservative threshold when applied to power maneuvers.
 In its place they propose a mechanistic approach that incorporates \gls{PCMI} and \gls{SCC} based cumulative damage.
 
+%Section on calculation of CDI
+%
+%
+%
+
+In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the studsvik ramp program using Falcon.
+These simulations were broken into three parts, first a steady state two dimensional, R-Z, depletion simulation is performed using the power histories of each rod.
+The results of these simulations are then used as the initial condition for transient R-Z simulations of the different power ramps under investigation.
+Finally, an R-$\theta$ model containing discrete fuel cracks is created for the axial location which experienced the highest R-Z hoop stress.
+This simulation provides the fuel pins maximum clad hoop stress and \gls{CDI} which can then be used to determine a threshold criteria.
+ 
+\begin{figure}
+\begin{tabular}{cc}
+\includegraphics[width=0.5\linewidth]{./Figures/lyon_image_6.JPG} & \includegraphics[width=0.5\linewidth]{./Figures/lyon_image_7.JPG}
+\end{tabular}
+\caption{The Power history (left), Falcon predicted hoop stress and Falcon predicted \gls{CDI} for Q11/1 of the Studsvik ramp program \cite{lyon_pci_2009}}
+\label{fig:paper_3_res}
+\end{figure}
 %%%%%%
 
 
