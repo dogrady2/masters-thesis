@@ -158,6 +158,9 @@ These ramp guideline were particularly conservative and focused primarily on \gl
 Since then, \gls{PCI} has been extensively studied in order to increase the efficiency of reactor start-up and minimize the number of fuel failures.
 %In order to extend the results of these studies to load follow operation, the driving forces of \gls{PCI} must be analyzed to determine their significance mid cycle power ramps.
  
+%%%%%%
+%First Paper
+%%%%%%
 Cox \cite{cox_pellet-clad_1990} performed an extensive review of the work done on zircaloy fuel failures caused by \gls{PCI} up to 1972.
 He begins by outlining all of the factors that can contribute to \gls{PCI} failures.
 The most significant factor in \gls{PCI} is the geometry of the fuel pellet. 
@@ -181,7 +184,11 @@ To minimize the risk of \gls{PCI}, Cox emphasized the importance of fuel conditi
 Fuel conditioning allows the cladding to relieve some of the stress experienced during the initial ramp while also influencing the chemical environment.
 Together these effects reduce the propagation of cracks through the cladding surfaces.
 %need more information on what else he did
+%%%%%%
 
+%%%%%%
+%Second Paper
+%%%%%%
 Jernkvist \cite{jernkvist_model_1995} developed a model for predicting \gls{PCI} induced fuel failure based on crack initiation and growth.
 Jernkvist model stressed three key parameters involved in \gls{PCI},
 \begin{itemize} 
@@ -189,9 +196,39 @@ Jernkvist model stressed three key parameters involved in \gls{PCI},
 \item fuel rod failure due to \gls{PCI} is normally a result of a sudden power increase 
 \item \gls{PCI} induced failure within a reactor core shows strong variability.
 \end{itemize}
+Jernkvist recognized that crack propagation occurs in two stages, slow intergranular propagation followed by rapid transgranular crack growth.
+Due to the presence of internal flaws within the cladding, Jernkvist neglected the intergranular process.
+In order to account for the stochastic nature of \gls{PCI} in reactor cores, a probabilistic treatment of the initial crack size was used.
+The crack propagation velocity was then determined by the stress, temperature, and iodine concentration at the tip of the crack.
+Using a finite element solver, Jernkvist calculated the stress at the tip of the crack.
+If the stress was greater than the iodine stress corrosion crack threshold, the velocity was determined using a correlation requiring the temperature and iodine concentration.
+To simplify the determination of the iodine concentration, a correlation was used based on the power and fuel burnup.
+It was then assumed that all of the iodine collects at the pellet-pellet interface and radial pellet cracks.
 
- 
+With the velocity of the crack propagation known the time to cladding failure can be calculated.
+Using an artificial power history, Jernkvist provides an example where the coefficient of friction is varied for the pellet-clad interface.
+At sufficiently high coefficients of friction, the local stress on the cladding is high enough to grow the crack through the cladding.
+This demonstration shows the importance of accurately determining the stress within the cladding when trying to predict cladding failure.
+Additionally, it highlights the need for a coupled multiphysics approach as the coefficient of friction at the pellet-clad interface is a function of temperature and burnup.
+%%%%%%
 
+%%%%%%
+%Third Paper
+%%%%%%
+One of the computational codes that attempts to incorporate this multiphysics approach is Falcon. %Need citation
+Falcon is a fully coupled, thermo-mechanical, two dimensional finite element computer code being developed by \gls{EPRI}.
+Building on the material properties provided in MATPRO, Falcon has the ability to simulate $UO_2$ pellet relocation, fission gas release and zircaloy cladding thermal creep.
+
+Falcon has been extensively benchmarked and is commonly used by contractors and utilities to mitigate the risk of \gls{PCI} induced fuel failure.
+Lyon et al. \cite{lyon_pci_2009} used Falcon in order to determine a criteria for mitigating \gls{PCI} induced fuel failure during power ramps.
+The authors point out that power ramp rate restrictions, which are normally set by fuel vendors, and power conditioning, the practice of taking intermediate holds at constant power, are not reliable at mitigating the risk of \gls{PCI}. 
+Rather, these practices lead to restrictive constraints on plant operation.
+
+Another criteria that is commonly suggested is the implementation of a stress based threshold.
+The authors argue that stress based thresholds are unable to distinguish between failed and non failed fuel rods, leading to a conservative threshold when applied to power maneuvers.
+In its place they propose a mechanistic approach that incorporates \gls{PCMI} and \gls{SCC} based cumulative damage.
+
+%%%%%%
 
 
 
