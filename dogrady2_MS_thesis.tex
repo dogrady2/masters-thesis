@@ -287,9 +287,160 @@ As a result further validation is needed for a \gls{CDI} based criteria.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Plant Description}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+PWR1 is a four-loop Westinghouse PWR.
+Each core loading has 193 Westinghouse 17x17 fuel assemblies, comprised of 264 fuel rods, 24 guide tubes and one instrumentation tube. 
+Each fuel rod consists of two axial regions, a blanket and a mid-section. 
+Within the mid-section, the enrichment of each rod is selected to ensure sufficiently low power peaking and a desired cycle length. 
+The enrichment within the blanket is typically lower than the mid-section to reduce axial leakage from the core. 
+In addition, a thin layer of zirconium diboride may be applied to the mid-section of a fuel pin. 
+This thin coating, known as an \gls{IFBA}, allows for greater reactivity control throughout the life of the fuel rod. 
+One drawback of IFBA coating is an increase in the plenum pressure as the absorber is burned. 
+To compensate for this increase in pressure, annular pellets are used within the blanket region. 
+
+The VERA model includes the core plates, nozzles, gaps, two Inconel and six Zircaloy spacer grids, and three intermediate flow mixer (IFM) grids. 
+In addition, a total of twenty-four different assembly designs were used in the various cycles of interest. 
+All core and assembly geometry details necessary to model PWR1 in VERA-CS were collected and provided by the industry partner.
+
+\section{Methodology}
+
+\subsection{VERA-CS}
+\gls{CASL}'s primary computational tool suite, VERA-CS, incorporates coupled physics and science-based models, state-of-the-art numerical methods and modern computational science applied to reactor core simulation. 
+VERA-CS achieves this task by integrating three well-developed physics simulators with other supporting sub-components. 
+In the present work, we used the deterministic neutronics solver, MPACT, coupled with the sub-channel thermal-hydraulics solver, CTF, to perform detailed simulations down to single-pin resolution,, as shown in Figure \ref{fig:workflow}.
+The fuel performance (thermo-mechanical) code, BISON, was used to construct fuel temperature tables, which related the temperature of the fuel to the temperature of the cladding as a function of burnup.  
+A significant advantage of the VERA-CS system is the reduction of overall modeling effort by unifying all solver components into a single user-friendly input specification (called VERAin) and a single binary output file.
+The VERAin input file is an ASCII text input based on geometric and material descriptions that is parsed out to each code (physics) component through built-in tools. 
+Below we will briefly describe the three primary simulators that are part of the VERA-CS system used in this work.
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=\linewidth,trim={2cm 5cm 2cm 5cm}]{./Figures/VERA-CS-Figure.pdf}
+\end{center}
+\caption{Primary physics simulator components of VERA-CS used in this work.}
+\label{fig:workflow}
+\end{figure} 
+
+\subsubsection{MPACT}
+MPACT is a neutron transport solver being developed by the \gls{UMich} and \gls{ORNL}. 
+It provides pin-resolved flux and power distributions \cite{kochunas_overview_2013}. 
+To solve three-dimensional (3D) problems, it employs a 2D/1D method, which decomposes the problem into a 1D axial stack of 2D radial planes \cite{zhu_assessment_2014}. 
+These planes are then solved using Method of Characteristics (MOC). 
+While there are a variety of axial solvers available, the Nodal Expansion Method (NEM)-simplified P3 (SP3) solver is the default, which wraps a one-node NEM kernel \cite{stimpson_axial_2014}. 
+These 2D and 1D solvers are coupled together through transverse leakage to ensure neutron conservation, and they are accelerated using 3D \gls{CMFD}. 
+
+\subsubsection{CTF}
+CTF is a subchannel TH code being developed by \gls{ORNL} and \gls{NCSU} for LWR analysis \cite{avramova_ctf:_2009}. 
+It simulates two-phase flow with a three-field representation (liquid, droplet, and vapor) assuming the liquid and droplet fields are in a dynamic equilibrium, leaving two energy conservation equations. 
+CTF provides significantly higher resolution and physical detail than the internal TH solver in MPACT, thus requires longer execution times. 
+
+\subsubsection{BISON}
+The BISON fuel performance code is being developed by \gls{INL} to provide single-rod fuel performance modeling capability to assess best-estimate values of design and safety criteria. 
+BISON is able to capture complex thermo-mechanical behavior such as PCI failures in PWRs \cite{montgomery_advanced_2014}. 
+%%PCI is controlled by the complex relationship between the mechanical, thermal, and chemical responses of a fuel rod during operation. Consequently, modeling PCI requires an integral fuel performance code to simulate the fundamental processes of these behaviors. 
+BISON is built on \gls{INL}'s \gls{MOOSE} package \cite{gaston_moose:_2009}, which uses the finite element method for geometric representation and a Jacobian Free Newton-Krylov (JFNK) scheme to solve systems of partial differential equations \cite{williamson_multidimensional_2012}. 
+
+
+\subsection{Work Flow and Modeling Strategy}
+
+In the present work, several steps are involved in producing an accurate neutronic/thermal-hydraulics core model. 
+Figure \ref{fig:method} displays the VERA-CS modeling stages used in this work.
+
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=\linewidth]{./Figures/method.png}
+\end{center}
+\caption{Modeling strategy to simulate load follow in PWR1 cycle 21.}
+\label{fig:method}
+\end{figure} 
+
+In most cases, each cycle includes assemblies from the previous two cycles, which necessitates a total of five cycles of depletion simulation to provide an accurate isotopic composition and power histories for the oldest assemblies present in cycle 21 (from cycle 19). 
+Although it would be most accurate to start modeling from the \gls{BOL} of PWR1, this is computationally impractical. 
+In this work, individual pre-burned assemblies were inserted into the cycle 17 core model through a "jump-in" strategy to approximate the shuffled assemblies present in cycle 17 (from cycle 15 and 16). 
+These approximate assemblies are removed from the core by the start of cycle 19, which minimizes their effect on isotropic accuracy of our target cycle, cycle 21. 
+
+Because of the difficulties in performing single assembly 3D depletion, special attention was paid to the exposure axial offset of each assembly at its desired burnup. 
+During the project it was determined that the exposure axial offset needs to be close to zero to prevent an unrealistic power axial offset from occurring in cycle 17. 
+In order to approximate cycle 15 and 16 assemblies as closely as possible, a total of 7 assembly types were burned to 15 target burnups. 
+These 15 assemblies were then inserted into the proper position in cycle 17, based on the core loading scheme.
+
+
+\section{Results} 
+
+\subsection{Low Power Physics Testing}
+Before the cycle depletion was simulated, a \gls{LPPT} was conducted to validate the shuffling scheme for each cycle, as shown in Figure \ref{fig:method}.
+The \gls{LPPT}s included a critical boron search, an \gls{ITC} test and a \gls{CRW} test. 
+The \gls{ITC} test was conducted by varying the temperature of the fuel and moderator by $\pm$4 $^\circ$F. 
+The change in reactivity was then used to determine the \gls{ITC}. 
+The \gls{CRW} tests were performed using a \gls{DRWM} technique, where each control rod bank was individually inserted into the core and the change in reactivity was used to determine the control bank's worth. 
+The comparison of the calculated critical boron, \gls{ITC} and \gls{CRW} to their measured value is shown in Table \ref{tab:cb}, and Figure \ref{fig:crw}, respectively. 
+It is observed that the MPACT accurately predicts the measured critical boron value from cycle 19 onward.
+The \gls{ITC} predictions are within 2 pcm for all cycles, which is within a reasonable margin of error.
+In addition, it is observed that the predicted \gls{CRW} values are all within $\pm6$ \%.
+It is observed that from cycle 19 onward, the \gls{CRW} values for the different control banks tend to become more irregular.
+This irregularity causes the total predicted control rod worth to be within 1 \% for cycle 19, 20 and 21. 
+It should be noted that some of the large relative errors observed in the control rod worth comparisons are a results of low measured rod worth. 
+Based on these comparisons, it is concluded that any error introduced by the individually burned assemblies inserted into cycle 17 is eliminated by cycle 19, which shows an excellent agreement with the measured values. 
+%Additional investigation is required to reduce these errors.   
+
+\begin{table}[!htb]
+\caption{Low Power Physics Results}
+\label{tab:cb}
+\begin{center}
+\begin{tabular}[!t]{|c|c|c|}
+\hline
+Cycle      & Critical Boron   & Isothermal Temp. Coeff.      \\
+           & Difference [ppm] & Difference [pcm/$^{\circ}$F]  \\ \hline
+17 & -42 & -0.6     \\\hline
+18 & 44  & -1.4     \\\hline
+19 & 1   & -1.7     \\\hline
+20 & 3 & -0.83     \\\hline
+21 & -10 & 0.4     \\\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[trim={0 2cm 0 2cm},clip,width=\linewidth]{./Figures/crw_diff.pdf}
+\end{center}
+\caption{Comparison of control rod worth of all 9 rod banks at HZP.}
+\label{fig:crw}
+\end{figure} 
+
+\subsection{Cycle Depletion}
+After the shuffling scheme for each cycle had been validated, cycle depletion was simulated from the \gls{BOC} to the \gls{EOC}, with special attention paid to the shutdown time between \gls{EOC} and \gls{BOC} of the next cycle to ensure accurate fission product decay between cycles. 
+As the fuel is depleted over a reactor cycle, the boron concentration in the coolant is reduced via dilution to maintain criticality. 
+In addition to the boron concentration being diluted over the length of the cycle, the weight percent of $^{10}$B is also reduced. 
+This reduction is a result of boron depletion and is known to increase the critical boron concentration during the later dates of the cycle. 
+MPACT can account for boron depletion through explicit input of $^{10}$B enrichment, but this requires measurements of the $^{10}$B concentration before the simulation can be performed.
+As an alternative, the simulations is conducted with a constant $^{10}$B enrichment of 19.9 w/o and the measured critical boron is corrected using the measured $^{10}$B enrichment.
+%\begin{figure}[!htb]
+%\begin{center}
+%\includegraphics[trim={0 2cm 0 3.1cm},clip,width=\linewidth]{./Figures/as_is_b.pdf}
+%\end{center}
+%\caption{Comparison of simulated to the uncorrected measured critical boron concentrations.}
+%\label{fig:as_is_b}
+%\end{figure} 
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[trim={0 2cm 0 3.1cm},clip,width=\linewidth]{./Figures/corr_b.pdf}
+\end{center}
+\caption{Comparison of simulated to the measured critical boron concentrations.}
+\label{fig:cor_b}
+\end{figure} 
+
+The measured boron concentrations were used to establish the accuracy of the core reactivity vs. fuel burnup. 
+The boron "letdown" is compared for cycles 19-21 in Figure \ref{fig:cor_b}. 
+Figure \ref{fig:cor_b} contains a comparison of the corrected measured boron concentration with the MPACT simulation. 
+%This correction accounts for the depletion of $^{10}$B over the length of the cycle by scaling the measured boron concentration with the ratio of the the measured $^{10}$B concentration to the MPACT $^{10}$B concentration.
+As shown in Figure \ref{fig:cor_b}, the difference between corrected measured and simulated critical boron concentration varies between -40 ppm at the beginning of cycle to +20 ppm at the end of the cycle. 
+The cause of this reactivity swing is believed to be the temperature tables used to determine the fuel's temperature as a function of burnup and linear heat rate.
+These tables are not used during \gls{HZP} calculations, which show good agreement to the measured values, and are constant for all three cycles, which have very consistent discrepancies.
+Regardless, the difference is within 50 ppm for each cycle depletion, which is considered sufficiently accurate.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary of Previous Results}
