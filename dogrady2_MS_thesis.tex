@@ -286,7 +286,13 @@ As a result further validation is needed for a \gls{CDI} based criteria.
 \chapter{PWR1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+PWR1 was chosen due to the significant load follow maneuvers that occurred during operating cycle 21. 
+To provide an accurate power history and isotopic composition for the load follow operation during cycle 21, it was decided that a jump-in depletion would be performed starting four cycles earlier, i.e. cycle 17. 
+This decision is due to core loading patterns that include assemblies shuffled from two cycles prior (e.g. cycle 21 includes assemblies introduced in cycle 19, whereas cycle 19 includes assemblies introduced in cycle 17). 
+By the advice of CASL, it was determined that any approximations of power histories or isotopic compositions introduced to the model in cycle 17 would have a negligible effect on the results obtained in cycle 21.
 
+
+\section{PWR 1 Model Description}
 PWR1 is a four-loop Westinghouse PWR.
 Each core loading has 193 Westinghouse 17x17 fuel assemblies, comprised of 264 fuel rods, 24 guide tubes and one instrumentation tube. 
 Each fuel rod consists of two axial regions, a blanket and a mid-section. 
@@ -301,7 +307,6 @@ The VERA model includes the core plates, nozzles, gaps, two Inconel and six Zirc
 In addition, a total of twenty-four different assembly designs were used in the various cycles of interest. 
 All core and assembly geometry details necessary to model PWR1 in VERA-CS were collected and provided by the industry partner.
 
-\section{Methodology}
 
 \subsection{VERA-CS}
 \gls{CASL}'s primary computational tool suite, VERA-CS, incorporates coupled physics and science-based models, state-of-the-art numerical methods and modern computational science applied to reactor core simulation. 
@@ -312,9 +317,9 @@ A significant advantage of the VERA-CS system is the reduction of overall modeli
 The VERAin input file is an ASCII text input based on geometric and material descriptions that is parsed out to each code (physics) component through built-in tools. 
 Below we will briefly describe the three primary simulators that are part of the VERA-CS system used in this work.
 
-\begin{figure}[!htb]
+\begin{figure}
 \begin{center}
-\includegraphics[width=\linewidth,trim={2cm 5cm 2cm 5cm}]{./Figures/VERA-CS-Figure.pdf}
+\includegraphics[width=0.5\linewidth,trim={2cm 5cm 2cm 5cm}]{./Figures/VERA-CS-Figure.pdf}
 \end{center}
 \caption{Primary physics simulator components of VERA-CS used in this work.}
 \label{fig:workflow}
@@ -346,9 +351,9 @@ In the present work, several steps are involved in producing an accurate neutron
 Figure \ref{fig:method} displays the VERA-CS modeling stages used in this work.
 
 
-\begin{figure}[!htb]
+\begin{figure}
 \begin{center}
-\includegraphics[width=\linewidth]{./Figures/method.png}
+\includegraphics[width=0.5\linewidth]{./Figures/method.png}
 \end{center}
 \caption{Modeling strategy to simulate load follow in PWR1 cycle 21.}
 \label{fig:method}
@@ -365,7 +370,9 @@ In order to approximate cycle 15 and 16 assemblies as closely as possible, a tot
 These 15 assemblies were then inserted into the proper position in cycle 17, based on the core loading scheme.
 
 
-\section{Results} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary of Previous Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Low Power Physics Testing}
 Before the cycle depletion was simulated, a \gls{LPPT} was conducted to validate the shuffling scheme for each cycle, as shown in Figure \ref{fig:method}.
@@ -383,7 +390,7 @@ It should be noted that some of the large relative errors observed in the contro
 Based on these comparisons, it is concluded that any error introduced by the individually burned assemblies inserted into cycle 17 is eliminated by cycle 19, which shows an excellent agreement with the measured values. 
 %Additional investigation is required to reduce these errors.   
 
-\begin{table}[!htb]
+\begin{table}
 \caption{Low Power Physics Results}
 \label{tab:cb}
 \begin{center}
@@ -402,9 +409,9 @@ Cycle      & Critical Boron   & Isothermal Temp. Coeff.      \\
 
 
 
-\begin{figure}[!htb]
+\begin{figure}
 \begin{center}
-\includegraphics[trim={0 2cm 0 2cm},clip,width=\linewidth]{./Figures/crw_diff.pdf}
+\includegraphics[trim={0 2cm 0 2cm},clip,width=0.5\linewidth]{./Figures/crw_diff.pdf}
 \end{center}
 \caption{Comparison of control rod worth of all 9 rod banks at HZP.}
 \label{fig:crw}
@@ -417,16 +424,9 @@ In addition to the boron concentration being diluted over the length of the cycl
 This reduction is a result of boron depletion and is known to increase the critical boron concentration during the later dates of the cycle. 
 MPACT can account for boron depletion through explicit input of $^{10}$B enrichment, but this requires measurements of the $^{10}$B concentration before the simulation can be performed.
 As an alternative, the simulations is conducted with a constant $^{10}$B enrichment of 19.9 w/o and the measured critical boron is corrected using the measured $^{10}$B enrichment.
-%\begin{figure}[!htb]
-%\begin{center}
-%\includegraphics[trim={0 2cm 0 3.1cm},clip,width=\linewidth]{./Figures/as_is_b.pdf}
-%\end{center}
-%\caption{Comparison of simulated to the uncorrected measured critical boron concentrations.}
-%\label{fig:as_is_b}
-%\end{figure} 
-\begin{figure}[!htb]
+\begin{figure}
 \begin{center}
-\includegraphics[trim={0 2cm 0 3.1cm},clip,width=\linewidth]{./Figures/corr_b.pdf}
+\includegraphics[trim={0 2cm 0 3.1cm},clip,width=0.5\linewidth]{./Figures/corr_b.pdf}
 \end{center}
 \caption{Comparison of simulated to the measured critical boron concentrations.}
 \label{fig:cor_b}
@@ -442,9 +442,6 @@ These tables are not used during \gls{HZP} calculations, which show good agreeme
 Regardless, the difference is within 50 ppm for each cycle depletion, which is considered sufficiently accurate.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Summary of Previous Results}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Load-Follow Operation}
