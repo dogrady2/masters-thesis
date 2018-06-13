@@ -228,10 +228,24 @@ Another criteria that is commonly suggested is the implementation of a stress ba
 The authors argue that stress based thresholds are unable to distinguish between failed and non failed fuel rods, leading to a conservative threshold when applied to power maneuvers.
 In its place they propose a mechanistic approach that incorporates \gls{PCMI} and \gls{SCC} based cumulative damage.
 
-%Section on calculation of CDI
-%
-%
-%
+Similar to Jernkavist,  Lyon et al. recognized that cladding failure due to \gls{SCC} occurs in two stages, crack incubation and crack propagation.
+The \gls{CDI} model in FALCON accounts for both of these stages using a cumulative damage process, where damage accumulation is linear with time.
+This allows the damage fraction, $D$, to be defined as 
+\begin{equation}\label{eqn:paper_3_eqn_1}
+D = \int \frac{dt}{\bar{t}}
+\end{equation}
+where $\bar{t}$ is the time-to-failure.
+The time-to-failure of a material is normally measured in an \gls{SCC} out-of-pile test and is defined as
+\begin{equation}
+\bar{t} = f(\sigma,\sigma_y,\sigma_{ref},B,T)
+\end{equation}
+where $\sigma$ is the applied hoop stress, $\sigma_y$ is the materials yield strength, $\sigma_{ref}$ is burnup dependent function, $B$ is the burnup of the fuel, and $T$ is the temperature.
+It is important to note that Equation \ref{eqn:paper_3_eqn_1} only applies to a single power maneuver, therefore $D$ must be summed over all power maneuvers. 
+Experience has shown that $D$ exhibits logarithmic behavior with stress, therefore it should be interpreted probabilistically, where $D=1$ represents a 50\% failure probability while $D=0.1$ and $D=10$ imply a $<5$\% and $>59$\% failure probability.
+In order to account for the possibility that cladding stress can drop below the \gls{SCC} threshold during ramps and environmental difference between in-pile and out-of-pile fuel rods, an adjustable single valued parameter $\beta$ is introduced to the \gls{CDI} model. 
+\begin{equation}
+D = \sum \frac{\delta t_i}{\beta \bar{t_i}}
+\end{equation}
 
 In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the Studsvik Over Ramp, Super Ramp and Trans Ramp IV program, as well as, rods from a CEA/OSIRIS ramp program using FALCON.
 These simulations were broken into three parts, first a steady state two dimensional, R-Z, depletion simulation is performed using the power histories of each rod.
