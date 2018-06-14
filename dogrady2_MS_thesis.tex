@@ -287,6 +287,28 @@ Before Capps et al. could begin applying failure thresholds to fuel rods under i
 To do so, the Studsvik ramp tests were implemented in BISON using a four step process.
 The first three steps follow the same methodology used by Lyon et al, R-Z depletion followed by an R-Z fuel performance calculation, ending with a R-$\theta$ fuel performance simulation at the axial location with the highest hoop stress.
 The fourth step, which is unique to BISON, is a three dimensional R-$\theta$-Z fuel performance simulation of the entire rod.
+Although BISON is capable of computing \gls{CDI}, the authors only report the failure thresholds based on the peak cladding hoop stress.
+The results of both the R-$\theta$ and the three dimensional simulations were consistent with the results presented by Lyon et al.
+The authors observed that the hoop stress calculated in the three dimensional study was consistently higher than the hoop stress from the R-$\theta$ study.
+This signifies the importance the pellet's height has on the cladding stress.
+Although the three dimensional stress was elevated no clear cutoff was observed to distinguish the failed fuel rods from the intact fuel rods.
+For this reason, a statistical approach was developed for both the R-$\theta$ and the three dimensional simulations.
+
+Using the same four step methodology, the authors performed fuel performance simulations on several fuel rods from the commercial \gls{PWR}.
+Two different cycle startup ramps were investigated; the first cycle contained three failed fuel rods and the second contained a single failed fuel rod.
+The power histories for the R-Z depletion were provided by Westinghouse and are assumed to be from a nodal core simulator.
+Before analyzing any of the BISON results the authors observed important characteristics from the fuel rods power histories.
+Two of the failed rods in the first cycle were exposed to aggressive irradiation linear heat rates during their initial cycles.
+This led to the rods accumulating high burnups and the closing of the gap.
+The third failed rod saw a significant increase in its linear heat rate after its initial cycle.
+As noted in the previous works, these characteristics are strong indicators for potential \gls{PCI} induced fuel failure. 
+
+In order to account for the change in cladding material, zirc4 in the Studsvik tests, zirlo in the commercial reactor, Capps et al. scaled the thresholds to 395 MPa for the R-$\theta$ and 446 MPa for the three dimensional predictions.
+The peak cladding hoop stress for all three of the failed rods was predicted to be below the threshold in both simulations.
+Additionally, two of the non-failed rods that were simulated were predicted to have peak cladding hoop stress above the threshold. 
+This led the authors to conclude that "classical" \gls{PCI} could not be the cause of the failure.
+After introducing a \gls{MPS} to each of the simulated rods, all peak cladding hoop stresses fell above the 5\% failure threshold.
+Furthermore, one of the fuel rods was confirmed to have a \gls{MPS} during a \gls{PIE}, confirming the results of the simulation.
 
 %%%%%%
 
