@@ -310,11 +310,33 @@ This led the authors to conclude that "classical" \gls{PCI} could not be the cau
 After introducing a \gls{MPS} to each of the simulated rods, all peak cladding hoop stresses fell above the 5\% failure threshold.
 Furthermore, one of the fuel rods was confirmed to have a \gls{MPS} during a \gls{PIE}, confirming the results of the simulation.
 
+In order to reduce the probability of \gls{PCI} induced failure, classic and \gls{MPS} induced, Exelon implemented strict power ramp rates and began to introduce power holds during return to full power ramps.%Insert MPS sensitivity study details 
+Capps et al. investigated the effects of these restrictions on the cladding hoop stress and found that they could reduce the peak stress by approximately 50 MPa.
+Even with the reduction in failure risk associated with the decrease in hoop stress, fuel failure was still experienced during the initial power maneuver.
+This suggests that pellet defects are a major contributor to fuel failure during power maneuvers. 
+Using the restrictive power history developed by Exelon, Capps et al. performed a sensativity study on the maximum clad hoop stress as a function of \gls{MPS} length.
+Westinghouse specifications limit the dimension of a \gls{MPS} to 60 mils, but lengths up to 125 mils have been observed during \gls{PIE}.
+For this reason, \gls{MPS} with lengths ranging from 60 to 140 mils were simulated using 2D and 3D BISON simulations. 
+The hoop stress resulting from a \gls{MPS} is a result of pellet thermal expansion. 
+As the pellet expands the missing face does not exert an outward force on the cladding, causing the cladding to bend at the edges of the \gls{MPS}.
+In 2D simulations the hoop stress increases linearly with the length of the \gls{MPS}, with a widths of 110 mils increasing the probability of failure to 50\%.
+These simulations are inherently flawed as adiabatic boundary conditions are applied to the top and bottom the fuel slice, resulting in the limitation that heat must be conducted radially.
+As the missing pellet surface grows, the heat transfer across the gap degrades leading to an increase in pellet temperature.
+This increase in temperature causes the pellet to continue to swell, exerting additional pressure on the cladding.
+
+In reality, the heat will flow in the direction of the least resistence, i.e. axial conduction will compensate for the reduction in heat transfer across the gap.
+This effect is captured in the 3D simulations, which show miniscule changes in the maximum fuel temperature as a function of \gls{MPS} width.
+A \gls{MPS} width of 100 mils was found to result in a 50\% chance of fuel failure during the restrictive power ramps.
+Unfortunetly, the 3D simulations were performed using an infinite coefficient of friction between the pellet and cladding, causing elevated stresses in the cladding.
+
+
+
 %%%%%%
 
 %%%%%%
 %Fifth Paper
 %%%%%%
+
 
 %%%%%%
 
