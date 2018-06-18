@@ -314,7 +314,7 @@ In order to reduce the probability of \gls{PCI} induced failure, classic and \gl
 Capps et al. investigated the effects of these restrictions on the cladding hoop stress and found that they could reduce the peak stress by approximately 50 MPa.
 Even with the reduction in failure risk associated with the decrease in hoop stress, fuel failure was still experienced during the initial power maneuver.
 This suggests that pellet defects are a major contributor to fuel failure during power maneuvers. 
-Using the restrictive power history developed by Exelon, Capps et al. performed a sensativity study on the maximum clad hoop stress as a function of \gls{MPS} length.
+Using the restrictive power history developed by Exelon, Capps et al. performed a sensitivity study on the maximum clad hoop stress as a function of \gls{MPS} length.
 Westinghouse specifications limit the dimension of a \gls{MPS} to 60 mils, but lengths up to 125 mils have been observed during \gls{PIE}.
 For this reason, \gls{MPS} with lengths ranging from 60 to 140 mils were simulated using 2D and 3D BISON simulations. 
 The hoop stress resulting from a \gls{MPS} is a result of pellet thermal expansion. 
@@ -324,10 +324,10 @@ These simulations are inherently flawed as adiabatic boundary conditions are app
 As the missing pellet surface grows, the heat transfer across the gap degrades leading to an increase in pellet temperature.
 This increase in temperature causes the pellet to continue to swell, exerting additional pressure on the cladding.
 
-In reality, the heat will flow in the direction of the least resistence, i.e. axial conduction will compensate for the reduction in heat transfer across the gap.
+In reality, the heat will flow in the direction of the least resistance, i.e. axial conduction will compensate for the reduction in heat transfer across the gap.
 This effect is captured in the 3D simulations, which show miniscule changes in the maximum fuel temperature as a function of \gls{MPS} width.
 A \gls{MPS} width of 100 mils was found to result in a 50\% chance of fuel failure during the restrictive power ramps.
-Unfortunetly, the 3D simulations were performed using an infinite coefficient of friction between the pellet and cladding, causing elevated stresses in the cladding.
+Unfortunately, the 3D simulations were performed using an infinite coefficient of friction between the pellet and cladding, causing elevated stresses in the cladding.
 
 
 
@@ -337,7 +337,20 @@ Unfortunetly, the 3D simulations were performed using an infinite coefficient of
 %Fifth Paper
 %%%%%%
 
+In order to more comprehensively understand the effect pellet defects have on the cladding, Capps et al. studied the individual effects of fuel cracks and \gls{MPS}.
+The stress on the cladding caused by pellet cracks is a function of the crack length and the spacing in between cracks.
+As the crack spacing increases within the fuel pellet the number of cracks within the pellet decreases.
+This cause the opening of a single pellet to increase, which increases the tangential stress on the cladding at the cracks opening.
+It is typically found that commercial fuel has six to ten radial cracks, which helps to reduce the stress on the cladding.
 
+The length of a fuel pellet crack characterizes the compliance of the fuel pellet to its manufactured cylindrical shape.
+As the crack length increases, the fuel pellet is less compliant and creates a shear stress on the cladding.
+Capps et al. found that the shear stress exerted begins to saturate when the crack length approaches 50\% of the pellet radius.
+Although the stress on the cladding has saturated, the stress at the tip of the crack is larger than the  at a length of 50\%. %Need word here
+This suggests that the crack will continue to propagate until it has reached approximately 70\% of the pellet radius.
+
+In most cases, \gls{MPS} are accompanied by cracks.
+This makes it necessary 
 %%%%%%
 
 %%%%%%
