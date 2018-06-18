@@ -328,9 +328,6 @@ In reality, the heat will flow in the direction of the least resistance, i.e. ax
 This effect is captured in the 3D simulations, which show miniscule changes in the maximum fuel temperature as a function of \gls{MPS} width.
 A \gls{MPS} width of 100 mils was found to result in a 50\% chance of fuel failure during the restrictive power ramps.
 Unfortunately, the 3D simulations were performed using an infinite coefficient of friction between the pellet and cladding, causing elevated stresses in the cladding.
-
-
-
 %%%%%%
 
 %%%%%%
@@ -350,7 +347,21 @@ Although the stress on the cladding has saturated, the stress at the tip of the 
 This suggests that the crack will continue to propagate until it has reached approximately 70\% of the pellet radius.
 
 In most cases, \gls{MPS} are accompanied by cracks.
-This makes it necessary 
+This makes it necessary to incorporate pellet cracks when determining the effect of \gls{MPS}.
+Unlike pellet cracks \gls{MPS} cause hoop stresses within the clad through bending forces.
+This hoop stress shows a saturation as the \gls{MPS}width increases.
+In addition to the width of the \gls{MPS}, the shape of the defect has a strong effect the maximum hoop stress.
+It is typical to simulate \gls{MPS} as flat defects, although it is more likely they will be concave in shape. 
+This concavity further reduces the pellet-gap conductivity causing a rise in the fuel temperature and an increase in the maximum hoop stress.
+
+Although 2D simulations are useful in determining the effect of fuel cracks and \gls{MPS}, they are inherently flawed as much of the axial effects are lost in the boundary conditions.
+In addition to the loss of heat transfer in the axial direction, structural support is not taken into consideration as the \gls{MPS} has an infinite hight.
+Unfortunately three dimensional contact makes the simulation of cracks and \gls{MPS} difficult, and prohibits a full length fuel rod from being simulated in three dimension. 
+To work around this, Capps et al. simulated a stack of five discrete fuel pellets with a \gls{MPS} included in the center fuel pellet.
+The results of the three dimensional study showed that axial contributions reduce the maximum cladding hoop stress by 7 to 15 \%.
+Although this reduction is significant, the trends observed in the two dimensional studies did not change.
+Therefore, fuel performance studies can be conducted in two dimensions as long as the thresholds for stress were determined using consistent two dimensional studies.
+
 %%%%%%
 
 %%%%%%
