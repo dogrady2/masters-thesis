@@ -106,7 +106,7 @@ Recently, the low price of natural gas and government subsidized renewable energ
 In 2016, the \gls{US} had approximately 7\% of its total electricity generation coming from wind and solar power \cite{u.s_energy_information_administration_electricity_2016}. 
 This share is likely to increase as the \gls{US} continues to move away from fossil fuels and towards a "greener" energy future.
 As a result of this increase, in combination with the deregulation of the energy market, the price of electricity has become volatile. 
-At certain times, the price of selling electricity within a region can even become negative, due a sudden increase in renewable energy output and a low market demand \cite{paraschiv_impact_2014}. 
+At certain times, the price of selling electricity within a region can even become negative, due to a sudden increase in renewable energy output and a low market demand \cite{paraschiv_impact_2014}. 
 In some areas, negative electricity prices are further increased due to the fact that large generating facilities would rather sell at a loss to avoid decreasing their power level. 
 This preference is caused by the high capital cost and relatively low variable costs of large generating facilities \cite{lokhov_load-following_2011}.
 
@@ -114,39 +114,58 @@ Nuclear stations are typically one of these large generating facilities.
 As a result of the large construction costs and the fixed number of staff members that must be on site at all times, most utilities prefer to keep a reactor at full power, as it is easiest to maintain constant power. 
 If instead of remaining at full power, a nuclear station operated in load-following mode, could this increase the efficiency of the plant?
 During load-follow operation, a nuclear station will vary its power output in response to the anticipated demand to better suit the market needs, stabilizing the price of electricity.
-Theoretically, the current operating plants were all designed with the maneuverability to respond to such change in demand \cite{lokhov_technical_2011}.
+Theoretically, the currently operating plants were all designed with the maneuverability to respond to such change in demand \cite{lokhov_technical_2011}.
 In fact, many of the reactors in France already participate in load-following maneuvers with the help of grey control rods \cite{lokhov_technical_2011}.
 Grey control rods are similar to standard \gls{PWR} control rods but have significantly less rod worth \cite{yousefpour_improvement_2000}.
 The low rod worth allows them to be used for reactivity control without putting significant stress on the surrounding fuel. 
 In the \gls{US}, grey rods are not present in \gls{PWR}, increasing the complexity of load-follow operation \cite{lokhov_technical_2011}.
   
-To participate in load-follow operation in the \gls{US}, a \gls{PWR} can use the critical boron concentration to modify the power level while making minor control rod insertion to manage the core \gls{AO} \cite{lokhov_technical_2011}.  
-This practice, in addition to the response of the local Xenon concentrations, can lead to significant changes in local pin powers throughout the core.
+Previously load follow demonstrations have been performed in \gls{US} \gls{PWR}s.
+In the 1970's Indian Point underwent a series of load-follow power maneuvers, where 50 \% power swings performed using ramp rates that varied between 0.25 and 5.0 \% power/minute \cite{sipush_load-follow_1976}.
+The primary purpose of this study was to demonstrate the plants ability to maintain control over the \gls{AO} during/following the power maneuvers. 
+If control over the \gls{AO} is lost, control rods may not have the strength to effect the core power distribution in the presence of local xenon concentrations \cite{sipush_load-follow_1976}.
+With insufficient control over the flux profile local linear heat rates could exceed safety margins.
+
+In order to mitigate this possibility, \gls{PWR} use the critical boron concentration to modify the power level while making minor control rod insertion and inlet temperature modifications to manage the core \gls{AO} \cite{meyer_improved_1978}.  
+Although it is ensured that safety margins are maintained, the insertion of control rods, in addition to the response of the local Xenon concentrations, can lead to significant changes in local pin powers throughout the core.
 Changes in local power can cause fuel to swell or contract, due to thermal expansion \cite{gartner_power_1984}. %need citation
 If a utility chooses to ramp down the reactor during times of low demand, or high supply, the fuel pellets will contract.
 When the decision is made to return the reactor back to full power, the rate at which the power can be increased is limited by the thermal expansion of the fuel pellets \cite{gartner_power_1984}.
 A sudden expansion of the fuel pellet has the potential to exert additional stress on the cladding, commonly referred to as \gls{PCMI}.
 \gls{PCMI} can lead to fuel failure by \gls{PCI}, and has been extensively investigated since the early 1970s.
 
+\subsection{Pellet Clad Interaction}
+
 \gls{PCI} induced fuel failure is the result of \gls{PCMI} and environmental contributions.
 \gls{PCMI} is best described as the material interaction at the pellet-clad interface which creates a stress state on the fuel cladding \cite{kennard_pci_2016}.
-This material interaction is commonly caused by the thermal expansion of $UO_2$ fuel pellets during changes in power.
-%Oguma \cite{oguma_cracking_1983} found that a fuel pellets radius changes exponentially with its \gls{lhr}, thus large changes in power cause the fuel pellet to contact and strain the cladding.
+This stress state is normally quantified using the maximum cladding hoop stress, which occurs at the inner radius of the cladding.
+In a cylindrical fuel rod hoop stress, shown in Figure \ref{fig:hoop_stress_cite}, is a function of the pressure being exerted on the cladding through fuel pellet contact and the pressure difference between the gap and coolant.
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{./Figures/hopp_stress_cite.jpeg}
+\caption{Visualization of the hoop stress acting on the fuel cladding using the thin wall approximation \cite{kook_review_2013}}
+\label{fig:hoop_stress_cite}
+\end{figure}
+
+To determine the magnitude of the cladding hoop stress the shape of the fuel pellets mush be accurately known.
+The shape of the fuel pellets controls the volume of plenum, influencing the gap pressure, and in the case that the gap has closed, the fuel pellets shapes in restrained by the cladding. 
+Many different factors contribute to the shape of the fuel pellet, including temperature of the fuel, fission product inventory, power history and manufactoring charcteristics.
+During power maneuvers, the fuel temperatures is the most significant as it determines the degree to which the fuel expands.
+To further complicate the geometry of the fuel pellet, uneven thermal expansion during the initial ramp to power causes radial cracks to form within a pellet \cite{capps_evaluation_2016}.
+These cracks, in addition with thermal expansion, lead to shear forces and hoop stress on the inner radius of the fuel cladding.
+  
 In addition to the mechanical stress being exerted on the cladding, environmental contributions, chemical or geometrical in nature, have an adverse effect on the claddings integrity.
 Chemical environments arise from the release of fission products from the fuel pellet.
-Iodine and cadmium-in-cesium are considered to be the most corrosive fission products released from the pellet. %need citation
+Iodine and cadmium-in-cesium are considered to be the most corrosive fission products released from the pellet \cite{capps_evaluation_2016}. 
 In the presence of prolonged \gls{PCMI}, the corrosive chemical environment causes inter granular crack propagation, or \gls{SCC}, through the zircaloy based cladding.
 This type of cladding failure is commonly referred to as \gls{PCI}-\gls{SCC}, or "classical \gls{PCI}."
-
-%Go into more detail on hoop stress and $PCMI$
-%Include a photo of what hoop stress is, describe the harsh environment of a fuel pellet
 
 Geometric contributions to \gls{PCI} are a result of irregularities in the fuel pellet shape.
 Typical \gls{LWR} fuel pellets are ceramic $UO_2$ cylinder with a height of approximately 1 cm and dishes and chamfers on the top and bottom of the pellet.
 Hundreds of these pellets are stacked into a single fuel, with approximately 60,000 fuel rods in a \gls{LWR} core.
 The shear quantity of fuel pellets ordered by a utility makes it impossible for a fuel vendor to ensure no pellet has a defect.
 The most common defect is a \gls{MPS}, where part of the fuel pellet has chipped off during manufacturing.
-This chip causes asymmetric expansion of the pellet during power maneuvers leading to an increased local stress on the fuel cladding. 
+This chip causes asymmetric expansion of the pellet during power maneuvers leading to an increased local stress on the fuel cladding \cite{capps_evaluation_2016}. 
 If this stress exceeds the yield stress of the cladding, brittle failure is likely to occur.
 This type of cladding failure is commonly referred to as \gls{PCI}-\gls{MPS}, as the missing surface is the critical feature in causing the failure.
 
@@ -167,19 +186,18 @@ Since then, \gls{PCI} has been extensively studied in order to increase the effi
 %First Paper
 %%%%%%
 Cox \cite{cox_pellet-clad_1990} performed an extensive review of the work done on zircaloy fuel failures caused by \gls{PCI} up to 1972.
-He begins by outlining all of the factors that can contribute to \gls{PCI} failures.
-The most significant factor in \gls{PCI} is the geometry of the fuel pellet. 
+He found that fuel pellet geometry is the most significant factor in \gls{PCI}.
 The strain on the cladding is determined by
 \begin{enumerate}
 \item manufactured gap size
 \item shape of the fuel pellet
 \item effect of the chamfers and groves.
 \end{enumerate} 
-In addition to manufactured defects in the fuel pellets, he highlights that ceramic $UO_2$ also experiences a number of geometric changes as a function of radiation exposure and temperature/power level.
+In addition to manufactured defects in the fuel pellets, ceramic $UO_2$ fuel pellets also experiences a number of geometric changes as a function of radiation exposure and temperature/power level.
 These changes include but are not limited to fuel pellet  densification, cracking, relocation, and thermal expansion. 
-Pellet cracking and relocation contribute significantly to strain experience by the cladding due to the differential movement of the pellets  relative to one another.
+Pellet cracking and relocation contribute significantly to strain experience by the cladding due to the differential movement of the pellets relative to one another.
 This differential movement is further intensified  by the locking of crack edges into cracks with the cladding and the local coefficient of friction between the pellet/cladding.
-At high exposure the coefficient of friction can approach infinity as fission products have escaped the fuel pellet and have cemented the pellet to the cladding. 
+At high exposure the coefficient of friction can approach infinity as fission products have escaped the fuel pellet and cemented the pellet to the cladding, leading to intensified stresses on the cladding during power manuevers. 
 
 In addition to the contribution the fuel pellet geometry has on the local strain, the cladding material and geometry determine how the cladding will respond to the strain.
 The wall thickness to diameter ratio and creep rate of the cladding effect the magnitude of the initial stress and the rate at which the stress decays.
