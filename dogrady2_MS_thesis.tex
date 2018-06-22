@@ -410,13 +410,22 @@ Typically a core simulator will provide the predicted pin powers, which are need
 The assemblies selected are then considered the limiting assemblies for the power maneuver and are analyzed using a fuel performance simulator.
 Kennard et al. applied this screening process to a commercial \gls{PWR} start up ramp.
 The pins within the limiting fuel assemblies were analyzed using FALCON and the methodology presented by Lyon et al. \cite{lyon_pci_2009} .
-Based on the 1\% failure threshold for a FALCON fuel performance simulation,
 
+Based on the 1\% failure threshold for a FALCON fuel performance simulation, Kennard et al. make recommendations to mitigate the risk of \gls{PCI} induced fuel failures for a number of generic operating conditions.
+Two recommendations are made in regards to load-follow operation, the first being the importance of maintaining \gls{AO} control.
+During a return to full power maneuver, the local xenon concentrations and moderator temperature coefficient will cause the core \gls{AO} to swing.
+If the \gls{AO} swing is significant enough local power levels may exceed conditioned power levels causing a sudden expansion of the fuel pellet.
+Strong control over the \gls{AO} will reduce this risk, mitigating the chance of fuel failure.
+The second recommendation is better described as a warning.
+Kennard et al. warn that local power uncertainties can increase the stress experienced during returns to full power after a reduced power hold.
+This recommendation highlights the importance of accurately knowing local power at the pin cell level.
+Many core simulators would use a nodal core simulator and pin power reconstruction to calculate the pin power as a function of time.
+This reconstruction is likely to introduce uncertainty in the pin powers leading to uncertainty in the fuel performance results.
 
-
-
-
-
+In this work, \gls{VERACS} is used to simulate load-follow operation of a commercial \gls{PWR}, PWR1.
+\gls{VERACS} is capable of accurately predicting pin powers allowing for reduced uncertainty in fuel performance results.
+In addition to the reduced uncertainty in fuel performance results, the fideleity of the \gls{VERACS} results allow for a pin focused screening process in place of an assembly based process.
+By focusing on individual pins the number of necessary fuel performance calculations can be reduced allowing for the examination of more severe load-follow maneuvers.
 %%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
