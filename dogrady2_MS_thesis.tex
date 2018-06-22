@@ -196,18 +196,31 @@ The strain on the cladding is determined by
 \item effect of the chamfers and groves.
 \end{enumerate} 
 In addition to manufactured defects in the fuel pellets, ceramic $UO_2$ fuel pellets also experiences a number of geometric changes as a function of radiation exposure and temperature/power level.
-These changes include but are not limited to fuel pellet  densification, cracking, relocation, and thermal expansion. 
-Pellet cracking and relocation contribute significantly to strain experience by the cladding due to the differential movement of the pellets relative to one another.
-This differential movement is further intensified  by the locking of crack edges into cracks with the cladding and the local coefficient of friction between the pellet/cladding.
-At high exposure the coefficient of friction can approach infinity as fission products have escaped the fuel pellet and cemented the pellet to the cladding, leading to intensified stresses on the cladding during power manuevers. 
+These changes include, but are not limited to, fuel pellet  densification, cracking, relocation, and thermal expansion. 
+Pellet cracking and relocation contribute significantly to the strain experienced by the cladding due to the differential movement of the pellets relative to one another.
+This differential movement is further intensified  by the locking of crack edges into cracks within the cladding and the local coefficient of friction between the pellet/cladding.
+At high exposure the coefficient of friction can approach infinity as fission products have escaped the fuel pellet and cemented the pellet to the cladding, leading to intensified stresses during power maneuvers. 
 
 In addition to the contribution the fuel pellet geometry has on the local strain, the cladding material and geometry determine how the cladding will respond to the strain.
 The wall thickness to diameter ratio and creep rate of the cladding effect the magnitude of the initial stress and the rate at which the stress decays.
-The total stress imposed on the cladding a function of maximum power, which determines the total expansion of the fuel pellet, and the change in power during a power ramp, which determines the increment in cladding strain.
+The total stress imposed on the cladding is a function of the maximum power, which determines the total expansion of the fuel pellet, and the change in power during a power ramp, which determines the increment in cladding strain.
 Cox goes on to highlight the importance of a corrosive agent at causing \gls{PCI}, noting that Iodine and Cadmium-in-Cesium are the largest contributors to the corrosive environment at the cladding surface.
-To minimize the risk of \gls{PCI}, Cox emphasized the importance of fuel conditioning or holds at intermediate power during large power ramps.
-Fuel conditioning allows the cladding to relieve some of the stress experienced during the initial ramp while also influencing the chemical environment.
-Together these effects reduce the propagation of cracks through the cladding surfaces.
+To minimize the risk of \gls{PCI}, Cox emphasized the importance of fuel conditioning and holds at intermediate power during large power ramps.
+
+The term fuel conditioning is commonly used by researchers and industry representatives when discussing power maneuvers, yet the quantitative definition of conditioning can be difficult to find.
+Capps et al. describes fuel condition as the state of the fuel rod when considering the changes in the fuel, cladding and gap \cite{capps_evaluation_2016}.
+Many of these changes are a result of the pellet and cladding's response to radiation and heat transfer, for example
+\begin{itemize}
+\item fuel pellet cracking and relocation are caused by the thermal expansion of $UO_2$,
+\item fuel pellet densification is caused by radiation exposure,
+\item fuel pellet swelling is caused by fission product accumulation,
+\item grain growth in fuel pellets is caused by elevated temperatures,
+\item and creep deformation in the pellet and the cladding occur due to elevated temperatures and radiation exposure.
+\end{itemize}
+Due to the fact that all of these changes are dependent on the local power and exposure, a concrete definition of fuel conditioning is difficult to create.
+Rather, fuel conditioning describes the ability of the fuel rod to responds to rapid changes in power \cite{capps_evaluation_2016}.
+During conditioning the cladding is able to relieve some of thee stress experienced during a power increases while also influencing the chemical environment at the surface of the pellet \cite{cox_pellet-clad_1990}.
+Together these effects reduce the propagation of cracks, limiting the possibility of \gls{PCI} induced fuel failure.
 %%%%%%
 
 %%%%%%
@@ -220,8 +233,7 @@ Jernkvist model stressed three key parameters involved in \gls{PCI},
 \item fuel rod failure due to \gls{PCI} is normally a result of a sudden power increase 
 \item \gls{PCI} induced failure within a reactor core shows strong variability.
 \end{itemize}
-Jernkvist recognized that crack propagation occurs in two stages, slow intergranular propagation followed by rapid transgranular crack growth.
-Due to the presence of internal flaws within the cladding, Jernkvist neglected the intergranular process.
+Due to the presence of internal flaws within the cladding, Jernkvist neglected the intergranular process and only considered transgranular crack growth.
 In order to account for the stochastic nature of \gls{PCI} in reactor cores, a probabilistic treatment of the initial crack size was used.
 The crack propagation velocity was then determined by the stress, temperature, and iodine concentration at the tip of the crack.
 Using a finite element solver, Jernkvist calculated the stress at the tip of the crack.
@@ -245,12 +257,12 @@ Building on the material properties provided in MATPRO, FALCON has the ability t
 
 FALCON has been extensively benchmarked and is commonly used by contractors and utilities to mitigate the risk of \gls{PCI} induced fuel failure.
 Lyon et al. \cite{lyon_pci_2009} used FALCON in order to determine a criteria for mitigating \gls{PCI} induced fuel failure during power ramps.
-The authors point out that power ramp rate restrictions, which are normally set by fuel vendors, and power conditioning, the practice of taking intermediate holds at constant power, are not reliable at mitigating the risk of \gls{PCI}. 
+The authors point out that power ramp rate restrictions, which are normally set by fuel vendors, and fuel conditioning are not reliable at mitigating the risk of \gls{PCI}. 
 Rather, these practices lead to restrictive constraints on plant operation.
 
-Another criteria that is commonly suggested is the implementation of a stress based threshold.
-The authors argue that stress based thresholds are unable to distinguish between failed and non failed fuel rods, leading to a conservative threshold when applied to power maneuvers.
-In its place they propose a mechanistic approach that incorporates \gls{PCMI} and \gls{SCC} based cumulative damage.
+Another criteria that is commonly suggested by fuel vendors is the implementation of a stress based threshold.
+Unfortunately, stress based thresholds are typically unable to distinguish between failed and non failed fuel rods, leading to a conservative threshold when applied to power maneuvers \cite{lyon_pci_2009}.
+ Lyon et al, proposes a mechanistic approach that incorporates \gls{PCMI} and \gls{SCC} based cumulative damage.
 
 Similar to Jernkavist,  Lyon et al. recognized that cladding failure due to \gls{SCC} occurs in two stages, crack incubation and crack propagation.
 The \gls{CDI} model in FALCON accounts for both of these stages using a cumulative damage process, where damage accumulation is linear with time.
@@ -271,7 +283,7 @@ In order to account for the possibility that cladding stress can drop below the 
 D = \sum \frac{\delta t_i}{\beta \bar{t_i}}
 \end{equation}
 
-In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the Studsvik Over Ramp, Super Ramp and Trans Ramp IV program, as well as, rods from a CEA/OSIRIS ramp program using FALCON.
+In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the Studsvik Over Ramp, Super Ramp and Trans Ramp IV program, as well as, rods from a CEA/OSIRIS ramp program using FALCON. %need citation 
 These simulations were broken into three parts, first a steady state two dimensional, R-Z, depletion simulation is performed using the power histories of each rod.
 The results of these simulations are then used as the initial condition for transient R-Z simulations of the different power ramps under investigation.
 Finally, an R-$\theta$ model containing discrete fuel cracks is created for the axial location which experienced the highest R-Z hoop stress.
@@ -286,8 +298,8 @@ A 550 MPa maximum clad hoop stress  and a \gls{CDI} of 5.85 were determined to s
 Using the 50\% chance as a hard cut off between non-failed and failed rods, the authors evaluated how each of the criteria performed using the 14 fuel rods.
 The peak stress was able to corrected predict the behavior of eight out of the 14 fuel rods while the \gls{CDI} predicted the behavior of 13 out of the 14 rods.
 Although this work does show the superiority of a \gls{CDI} based criteria, the training set and validation set are considerably small.
-Additionally, the power ramps used during the test program are extreme and are unlikely to be performed during standard operation.
-As a result further validation is needed for a \gls{CDI} based criteria.
+Additionally, the power ramps used during the test program are extreme and are unlikely to be performed during standard operation or load-follow operation.
+As a result, further validation is needed before deciding if a \gls{CDI} based criteria is reliable.
  
 \begin{figure}
 \begin{tabular}{cc}
@@ -303,10 +315,10 @@ As a result further validation is needed for a \gls{CDI} based criteria.
 %Fourth Paper
 %%%%%%
 Similar to Lyon et al., Capps et al. \cite{capps_pci_2017} used BISON to investigate fuel rods that failed during the start up ramp of a commercial \gls{PWR}.
-Before Capps et al. could begin applying failure thresholds to fuel rods under investigation, the thresholds needed to be determined using BISON as the FALCON ones would not apply.
-To do so, the Studsvik ramp tests were implemented in BISON using a four step process.
-The first three steps follow the same methodology used by Lyon et al, R-Z depletion followed by an R-Z fuel performance calculation, ending with a R-$\theta$ fuel performance simulation at the axial location with the highest hoop stress.
-The fourth step, which is unique to BISON, is a three dimensional R-$\theta$-Z fuel performance simulation of the entire rod.
+Before Capps et al. could begin applying failure thresholds to fuel rods under investigation, the thresholds needed to be determined using BISON as the thresholds are specific to the performance code.
+To do so, the Studsvik ramp tests were implemented in BISON using a four step process. %need citation
+The first three steps follow the same methodology used by Lyon et al, R-Z depletion followed by an R-Z fuel performance calculation, ending with a R-$\theta$ fuel performance calculation at the axial location with the highest hoop stress.
+The fourth step, which is unique to BISON, is a three dimensional R-$\theta$-Z fuel performance simulation of the entire rod. %check to make sure entire rod was simlated
 Although BISON is capable of computing \gls{CDI}, the authors only report the failure thresholds based on the peak cladding hoop stress.
 The results of both the R-$\theta$ and the three dimensional simulations were consistent with the results presented by Lyon et al.
 The authors observed that the hoop stress calculated in the three dimensional study was consistently higher than the hoop stress from the R-$\theta$ study.
@@ -318,24 +330,25 @@ Using the same four step methodology, the authors performed fuel performance sim
 Two different cycle startup ramps were investigated; the first cycle contained three failed fuel rods and the second contained a single failed fuel rod.
 The power histories for the R-Z depletion were provided by Westinghouse and are assumed to be from a nodal core simulator.
 Before analyzing any of the BISON results the authors observed important characteristics from the fuel rods power histories.
-Two of the failed rods in the first cycle were exposed to aggressive irradiation linear heat rates during their initial cycles.
+Two of the failed rods in the first cycle were exposed to aggressive linear heat rates during their initial cycle.
 This led to the rods accumulating high burnups and the closing of the gap.
 The third failed rod saw a significant increase in its linear heat rate after its initial cycle.
-As noted in the previous works, these characteristics are strong indicators for potential \gls{PCI} induced fuel failure. 
+As noted in the previous works, these characteristics are strong indicators each rods conditioning.
 
-In order to account for the change in cladding material, zirc4 in the Studsvik tests, zirlo in the commercial reactor, Capps et al. scaled the thresholds to 395 MPa for the R-$\theta$ and 446 MPa for the three dimensional predictions.
+In order to account for the change in cladding material, zirc4 in the Studsvik tests, zirlo in the commercial reactor, Capps et al. scaled the 5\% failure thresholds to 395 MPa for the R-$\theta$ and 446 MPa for the three dimensional predictions.
 The peak cladding hoop stress for all three of the failed rods was predicted to be below the threshold in both simulations.
-Additionally, two of the non-failed rods that were simulated were predicted to have peak cladding hoop stress above the threshold. 
+Additionally, two of the non-failed rods that were predicted to have peak cladding hoop stress above the threshold. 
 This led the authors to conclude that "classical" \gls{PCI} could not be the cause of the failure.
 After introducing a \gls{MPS} to each of the simulated rods, all peak cladding hoop stresses fell above the 5\% failure threshold.
-Furthermore, one of the fuel rods was confirmed to have a \gls{MPS} during a \gls{PIE}, confirming the results of the simulation.
+Furthermore, one of the fuel rods was confirmed to have a \gls{MPS} during a \gls{PIE}, confirming the predictions of the simulation.
 
-In order to reduce the probability of \gls{PCI} induced failure, classic and \gls{MPS} induced, Exelon implemented strict power ramp rates and began to introduce power holds during return to full power ramps.%Insert MPS sensitivity study details 
+In order to reduce the probability of \gls{PCI} induced failure, classic and \gls{MPS} induced, Exelon implemented strict power ramp rates and began to introduce power holds during return to full power ramps \cite{capps_pci_2017}.
 Capps et al. investigated the effects of these restrictions on the cladding hoop stress and found that they could reduce the peak stress by approximately 50 MPa.
-Even with the reduction in failure risk associated with the decrease in hoop stress, fuel failure was still experienced during the initial power maneuver.
+Even with this reduction in failure risk, fuel failure was still experienced during the initial power maneuver.
 This suggests that pellet defects are a major contributor to fuel failure during power maneuvers. 
-Using the restrictive power history developed by Exelon, Capps et al. performed a sensitivity study on the maximum clad hoop stress as a function of \gls{MPS} length.
-Westinghouse specifications limit the dimension of a \gls{MPS} to 60 mils, but lengths up to 125 mils have been observed during \gls{PIE}.
+Using the restrictive power history developed by Exelon, Capps et al. performed a sensitivity study on the maximum clad hoop stress as a function of \gls{MPS} width.
+
+Westinghouse specifications limit the dimension of a \gls{MPS} to 60 mils, but widths up to 125 mils have been observed during \gls{PIE}. %need citation
 For this reason, \gls{MPS} with lengths ranging from 60 to 140 mils were simulated using 2D and 3D BISON simulations. 
 The hoop stress resulting from a \gls{MPS} is a result of pellet thermal expansion. 
 As the pellet expands the missing face does not exert an outward force on the cladding, causing the cladding to bend at the edges of the \gls{MPS}.
@@ -347,28 +360,29 @@ This increase in temperature causes the pellet to continue to swell, exerting ad
 In reality, the heat will flow in the direction of the least resistance, i.e. axial conduction will compensate for the reduction in heat transfer across the gap.
 This effect is captured in the 3D simulations, which show miniscule changes in the maximum fuel temperature as a function of \gls{MPS} width.
 A \gls{MPS} width of 100 mils was found to result in a 50\% chance of fuel failure during the restrictive power ramps.
-Unfortunately, the 3D simulations were performed using an infinite coefficient of friction between the pellet and cladding, causing elevated stresses in the cladding.
+Unfortunately, the 3D simulations were performed using an infinite coefficient of friction between the pellet and cladding, causing elevated stresses in the cladding when compared to the 2D simulations.
+This prevents a meaningful comparison on the effect fuel temperature has on the failure thresholds in 2D and 3D simulations.
 %%%%%%
 
 %%%%%%
 %Fifth Paper
 %%%%%%
 
-In order to more comprehensively understand the effect pellet defects have on the cladding, Capps et al. studied the individual effects of fuel cracks and \gls{MPS}.
+In order to more comprehensively understand the effect pellet defects have on the cladding, Capps et al. studied the individual effects of fuel cracks and \gls{MPS}\cite{capps_evaluation_2017}.
 The stress on the cladding caused by pellet cracks is a function of the crack length and the spacing in between cracks.
 As the crack spacing increases within the fuel pellet the number of cracks within the pellet decreases.
-This cause the opening of a single pellet to increase, which increases the tangential stress on the cladding at the cracks opening.
-It is typically found that commercial fuel has six to ten radial cracks, which helps to reduce the stress on the cladding.
+This causes the opening of a single pellet to increase, which increases the tangential stress on the cladding at the cracks opening.
+It is typically found that commercial fuel has six to ten radial cracks, which helps to reduce the stress on the cladding. %need citation
 
 The length of a fuel pellet crack characterizes the compliance of the fuel pellet to its manufactured cylindrical shape.
 As the crack length increases, the fuel pellet is less compliant and creates a shear stress on the cladding.
 Capps et al. found that the shear stress exerted begins to saturate when the crack length approaches 50\% of the pellet radius.
-Although the stress on the cladding has saturated, the stress at the tip of the crack is larger than the  at a length of 50\%. %Need word here
+Although the stress on the cladding has saturated, the stress at the tip of the crack is larger than the fracture strength at a length of 50\%. %Need word here
 This suggests that the crack will continue to propagate until it has reached approximately 70\% of the pellet radius.
 
 In most cases, \gls{MPS} are accompanied by cracks.
 This makes it necessary to incorporate pellet cracks when determining the effect of \gls{MPS}.
-Unlike pellet cracks \gls{MPS} cause hoop stresses within the clad through bending forces.
+Unlike pellet cracks, \gls{MPS} cause hoop stresses within the clad through bending forces.
 This hoop stress shows a saturation as the \gls{MPS}width increases.
 In addition to the width of the \gls{MPS}, the shape of the defect has a strong effect the maximum hoop stress.
 It is typical to simulate \gls{MPS} as flat defects, although it is more likely they will be concave in shape. 
@@ -381,12 +395,12 @@ To work around this, Capps et al. simulated a stack of five discrete fuel pellet
 The results of the three dimensional study showed that axial contributions reduce the maximum cladding hoop stress by 7 to 15 \%.
 Although this reduction is significant, the trends observed in the two dimensional studies did not change.
 Therefore, fuel performance studies can be conducted in two dimensions as long as the thresholds for stress were determined using consistent two dimensional studies.
-
 %%%%%%
 
 %%%%%%
 %Sixth Paper
 %%%%%%
+
 
 %%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
