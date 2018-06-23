@@ -615,11 +615,22 @@ A graphical representation of the power histories, along with the predicted \gls
 %\end{landscape}
 
 In order to validate the MPACT simulation, the critical boron was calculated during the load-follow simulation. 
-The MPACT predicted critical boron was then compared to the estimated critical boron provided by the industry partner.
+The MPACT predicted critical boron and \gls{AO} was then compared to the estimated critical boron and \gls{AO} provided by the industry partner.
 Unfortunately, the estimated critical boron was obtained using the core monitoring system, which was shown to have incorrect critical boron concentrations before a kbias was applied. 
 As a result, a direct comparison of the critical boron was not performed, instead a comparison of the critical boron response immediately following a kbias was used to validate the prediction.
-It is observed in Figure \ref{fig:lf_his3} that the MPACT predict boron response show excellent agreement with the core monitoring system boron response during the load-follow power maneuvers at \gls{BOC}.
-In future studies, the MPACT predicted core response will be compared to more accurate plant measured data in order to further verify the transient simulation. 
+It is observed in Figure \ref{fig:lf_his2} that the MPACT predict boron response shows excellent agreement with the core monitoring system boron response during the load-follow power maneuvers at \gls{BOC}.
+The comparison of the MPACT predict \gls{AO} and the plant estimated \gls{AO} allow for several conclusions to be drawn about the MPACT simulation.
+At times when power is decreased, both the MPACT and plant \gls{AO} are observed to increase.
+This behavior is expected as the moderator temperature coefficient should push power towards the top of the core as power is decreased.
+Unfortunately the MPACT predictions over estimate the magnitude of the positive swing.
+This overestimation could be a result of the temperature tables used in the simulation or could be a result of the under predicted control bank worth.
+Additionally, sinusoidal oscillations in the MPACT \gls{AO} are observed during times of constant power following a power maneuver.
+These oscillations are not observed in the plant data but their magnitude is negligible as they are less then 1 \% from peak to peak.
+  
+Further investigation is required to reduce the observed discrepancies.
+In general it can be concluded that the MPACT predictions are within plant measurement uncertainties.
+Therefore, the results of these simulations, linear heat rates and cladding surface temperatures, can be used as the boundary conditions in fuel performance conditions.
+The detailed pin level data that is available from the \gls{VERACS} results allows for reduced uncertainties in the fuel performance boundary conditions leading to more accurate predictions of peak cladding hoop stresses within a pin.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
