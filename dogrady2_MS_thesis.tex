@@ -408,8 +408,9 @@ Kennard et al. describes how to go about reducing the 193 fuel assemblies found 
 The screening process  looks to see if 1) an assembly has seen a significant power increase since its previous cycle, 2) exposure falls above a critical value, and 3) the ratio of the maximum power to the conditioned power is large.
 Typically a core simulator will provide the predicted pin powers, which are needed to screen the power maneuver.
 The assemblies selected are then considered the limiting assemblies for the power maneuver and are analyzed using a fuel performance simulator.
+%Mention how this load-follow makes it difficult to implement this screening
 Kennard et al. applied this screening process to a commercial \gls{PWR} start up ramp.
-The pins within the limiting fuel assemblies were analyzed using FALCON and the methodology presented by Lyon et al. \cite{lyon_pci_2009} .
+The pins within the limiting fuel assemblies were analyzed using FALCON and the methodology presented by Lyon et al. \cite{lyon_pci_2009}.
 
 Based on the 1\% failure threshold for a FALCON fuel performance simulation, Kennard et al. make recommendations to mitigate the risk of \gls{PCI} induced fuel failures for a number of generic operating conditions.
 Two recommendations are made in regards to load-follow operation, the first being the importance of maintaining \gls{AO} control.
@@ -422,20 +423,30 @@ This recommendation highlights the importance of accurately knowing local power 
 Many core simulators would use a nodal core simulator and pin power reconstruction to calculate the pin power as a function of time.
 This reconstruction is likely to introduce uncertainty in the pin powers leading to uncertainty in the fuel performance results.
 
-In this work, \gls{VERACS} is used to simulate load-follow operation of a commercial \gls{PWR}, PWR1.
+In this work, \gls{VERACS} is used to simulate load-follow operation of a commercial \gls{PWR}.
 \gls{VERACS} is capable of accurately predicting pin powers allowing for reduced uncertainty in fuel performance results.
 In addition to the reduced uncertainty in fuel performance results, the fideleity of the \gls{VERACS} results allow for a pin focused screening process in place of an assembly based process.
 By focusing on individual pins the number of necessary fuel performance calculations can be reduced allowing for the examination of more severe load-follow maneuvers.
+In the remaining chapters the results of load-follow focused fuel performance calculations will be presented for the operating history of a commercial \gls{PWR}.
+In Chapter two the preliminary work required to perform fuel performance calculations will be presented, including a description of the PWR1 model and the \gls{VERACS} code. 
+A detailed description of the BISON fuel performance code and the pin based screening process are presented in Chapter 3.
+In Chapter 4 the results of the fuel performance calculation will be analyzed using the pin based screening process.
+In closing, the conclusions drawn from this work and possible future extensions will be contained in Chapter 5.
+
+
 %%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{PWR1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\gls{UIUC} partnered with \gls{CASL} to investigate load-follow operations in a PWR. 
+The objective of the work was to investigate the effects of load-follow operation specific to an operating PWR. 
+At request of the owner, the reactor chosen was not be disclosed, but it will be referred to as PWR1.
 PWR1 was chosen due to the significant load follow maneuvers that occurred during operating cycle 21. 
 To provide an accurate power history and isotopic composition for the load follow operation during cycle 21, it was decided that a jump-in depletion would be performed starting four cycles earlier, i.e. cycle 17. 
 This decision is due to core loading patterns that include assemblies shuffled from two cycles prior (e.g. cycle 21 includes assemblies introduced in cycle 19, whereas cycle 19 includes assemblies introduced in cycle 17). 
-By the advice of CASL, it was determined that any approximations of power histories or isotopic compositions introduced to the model in cycle 17 would have a negligible effect on the results obtained in cycle 21.
+By the advice of \gls{CASL}, it was determined that any approximations of power histories or isotopic compositions introduced to the model in cycle 17 would have a negligible effect on the results obtained in cycle 21.
 
 
 \section{PWR 1 Model Description}
@@ -457,11 +468,11 @@ All core and assembly geometry details necessary to model PWR1 in VERA-CS were c
 \subsection{VERA-CS}
 \gls{CASL}'s primary computational tool suite, VERA-CS, incorporates coupled physics and science-based models, state-of-the-art numerical methods and modern computational science applied to reactor core simulation. 
 VERA-CS achieves this task by integrating three well-developed physics simulators with other supporting sub-components. 
-In the present work, we used the deterministic neutronics solver, MPACT, coupled with the sub-channel thermal-hydraulics solver, CTF, to perform detailed simulations down to single-pin resolution,, as shown in Figure \ref{fig:workflow}.
-The fuel performance (thermo-mechanical) code, BISON, was used to construct fuel temperature tables, which related the temperature of the fuel to the temperature of the cladding as a function of burnup.  
+In the present work, we used the deterministic neutronics solver, MPACT, coupled with the sub-channel thermal-hydraulics solver, CTF, to perform detailed simulations down to single-pin resolution, as shown in Figure \ref{fig:workflow}.
+The fuel performance (thermo-mechanical) code, BISON, was used to construct fuel temperature tables, which related the temperature of the fuel to the temperature of the cladding as a function of burnup and linear heat rate.  
 A significant advantage of the VERA-CS system is the reduction of overall modeling effort by unifying all solver components into a single user-friendly input specification (called VERAin) and a single binary output file.
 The VERAin input file is an ASCII text input based on geometric and material descriptions that is parsed out to each code (physics) component through built-in tools. 
-Below we will briefly describe the three primary simulators that are part of the VERA-CS system used in this work.
+Below is a brief description of two of the primary simulators that are part of the VERA-CS system used for this work, the BISON fuel performance simulator will be presented in Chapter 3.
 
 \begin{figure}
 \begin{center}
@@ -484,16 +495,9 @@ CTF is a subchannel TH code being developed by \gls{ORNL} and \gls{NCSU} for LWR
 It simulates two-phase flow with a three-field representation (liquid, droplet, and vapor) assuming the liquid and droplet fields are in a dynamic equilibrium, leaving two energy conservation equations. 
 CTF provides significantly higher resolution and physical detail than the internal TH solver in MPACT, thus requires longer execution times. 
 
-\subsubsection{BISON}
-The BISON fuel performance code is being developed by \gls{INL} to provide single-rod fuel performance modeling capability to assess best-estimate values of design and safety criteria. 
-BISON is able to capture complex thermo-mechanical behavior such as PCI failures in PWRs \cite{montgomery_advanced_2014}. 
-%%PCI is controlled by the complex relationship between the mechanical, thermal, and chemical responses of a fuel rod during operation. Consequently, modeling PCI requires an integral fuel performance code to simulate the fundamental processes of these behaviors. 
-BISON is built on \gls{INL}'s \gls{MOOSE} package \cite{gaston_moose:_2009}, which uses the finite element method for geometric representation and a Jacobian Free Newton-Krylov (JFNK) scheme to solve systems of partial differential equations \cite{williamson_multidimensional_2012}. 
-
-
 \subsection{Work Flow and Modeling Strategy}
 
-In the present work, several steps are involved in producing an accurate neutronic/thermal-hydraulics core model. 
+Several steps were involved in producing an accurate neutronic/thermal-hydraulics core model. 
 Figure \ref{fig:method} displays the VERA-CS modeling stages used in this work.
 
 
@@ -517,7 +521,7 @@ These 15 assemblies were then inserted into the proper position in cycle 17, bas
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Summary of Previous Results}
+\section{VERA-CS Results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Low Power Physics Testing}
@@ -531,10 +535,9 @@ It is observed that the MPACT accurately predicts the measured critical boron va
 The \gls{ITC} predictions are within 2 pcm for all cycles, which is within a reasonable margin of error.
 In addition, it is observed that the predicted \gls{CRW} values are all within $\pm6$ \%.
 It is observed that from cycle 19 onward, the \gls{CRW} values for the different control banks tend to become more irregular.
-This irregularity causes the total predicted control rod worth to be within 1 \% for cycle 19, 20 and 21. 
+Regardless, the total predicted control rod worth was within 1 \% for cycle 19, 20 and 21, which is within measurement uncertainties. 
 It should be noted that some of the large relative errors observed in the control rod worth comparisons are a results of low measured rod worth. 
 Based on these comparisons, it is concluded that any error introduced by the individually burned assemblies inserted into cycle 17 is eliminated by cycle 19, which shows an excellent agreement with the measured values. 
-%Additional investigation is required to reduce these errors.   
 
 \begin{table}
 \caption{Low Power Physics Results}
@@ -581,13 +584,10 @@ As an alternative, the simulations is conducted with a constant $^{10}$B enrichm
 The measured boron concentrations were used to establish the accuracy of the core reactivity vs. fuel burnup. 
 The boron "letdown" is compared for cycles 19-21 in Figure \ref{fig:cor_b}. 
 Figure \ref{fig:cor_b} contains a comparison of the corrected measured boron concentration with the MPACT simulation. 
-%This correction accounts for the depletion of $^{10}$B over the length of the cycle by scaling the measured boron concentration with the ratio of the the measured $^{10}$B concentration to the MPACT $^{10}$B concentration.
 As shown in Figure \ref{fig:cor_b}, the difference between corrected measured and simulated critical boron concentration varies between -40 ppm at the beginning of cycle to +20 ppm at the end of the cycle. 
 The cause of this reactivity swing is believed to be the temperature tables used to determine the fuel's temperature as a function of burnup and linear heat rate.
 These tables are not used during \gls{HZP} calculations, which show good agreement to the measured values, and are constant for all three cycles, which have very consistent discrepancies.
 Regardless, the difference is within 50 ppm for each cycle depletion, which is considered sufficiently accurate.
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Load-Follow Operation}
@@ -603,6 +603,10 @@ Regardless, the difference is within 50 ppm for each cycle depletion, which is c
 \section{BISON}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+The BISON fuel performance code is being developed by \gls{INL} to provide single-rod fuel performance modeling capability to assess best-estimate values of design and safety criteria. 
+BISON is able to capture complex thermo-mechanical behavior such as PCI failures in PWRs \cite{montgomery_advanced_2014}. 
+%%PCI is controlled by the complex relationship between the mechanical, thermal, and chemical responses of a fuel rod during operation. Consequently, modeling PCI requires an integral fuel performance code to simulate the fundamental processes of these behaviors. 
+BISON is built on \gls{INL}'s \gls{MOOSE} package \cite{gaston_moose:_2009}, which uses the finite element method for geometric representation and a Jacobian Free Newton-Krylov (JFNK) scheme to solve systems of partial differential equations \cite{williamson_multidimensional_2012}. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{MPACT Screening Process}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
