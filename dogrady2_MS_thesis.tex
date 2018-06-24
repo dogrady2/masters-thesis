@@ -637,6 +637,18 @@ The detailed pin level data that is available from the \gls{VERACS} results allo
 \chapter{Methodology}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The main focus of this work is to predict the limiting pin within a commercial \gls{PWR} during load-follow power maneuvers.
+Due to the stochastic nature of \gls{PCI} induced fuel failure and the randomness of pellet defects throughout the core, determining a single pin out of the approximately 60,000 present is unrealistic.
+Instead, it is desired that ~1000 of the fuel pins be selected and analyzed using the three step process outlined by Lyon et al. \cite{lyon_pci_2013}.
+Similar to the assembly based screening process developed by Kennard et al., the pin based screening process will look at characteristics indicating the fuels conditioning.
+In order to determine the validitiy of this screen process, all fuel pins contained within the quarter core \gls{VERACS} model will simulated using the BISON fuel performance code.
+In the following sections the procedure for selecting the 1000 fuel pins and description of the BISON fuel performance code will be presented.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{MPACT Screening Process}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{BISON}
@@ -647,10 +659,9 @@ BISON is able to capture complex thermo-mechanical behavior such as PCI failures
 %%PCI is controlled by the complex relationship between the mechanical, thermal, and chemical responses of a fuel rod during operation. Consequently, modeling PCI requires an integral fuel performance code to simulate the fundamental processes of these behaviors. 
 BISON is built on \gls{INL}'s \gls{MOOSE} package \cite{gaston_moose:_2009}, which uses the finite element method for geometric representation and a Jacobian Free Newton-Krylov (JFNK) scheme to solve systems of partial differential equations \cite{williamson_multidimensional_2012}. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{MPACT Screening Process}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Results and Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
