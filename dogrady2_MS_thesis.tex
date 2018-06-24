@@ -665,9 +665,18 @@ These equation describe the conservation of energy, momentum, and species, which
 \nabla \cdot \vec{\sigma} + \rho \vec{f} =0
 \end{equation} 
 \begin{equation} \label{eqn:bis_spec}
-\frac{\partial C}{\partial t} + \nabla \cdot \vec{J} +\lambda C - S =0
+\frac{\partial C}{\partial t} + \nabla \cdot \vec{J} +\lambda C - S =0.
 \end{equation} 
+$\rho$, $C_p$ and $T$ respectively describe the density, specific heat and temperature of a material subject to a volumetric heat source, described by $e_f$, the energy released per fission, and $\dot{F}$ the volumetric fission rate.
+$\sigma$ describes the Cauchy stress tensor under static equilibrium and a specific body force, $\vec{f}$.
+$C$, $\lambda$, and $S$ are the concentration, decay constant and volumetric source of a particular isotope.
+
+The implementation of these equations allows for non-linear kinematics and non-linear material behavior.
+This accounts fr the temperature dependent thermal and mechanical properties of the nuclear fuel and incorporates the effects of material creep and plasticity.
  
+
+
+
 
 BISON is able to capture complex thermo-mechanical behavior such as PCI failures in PWRs \cite{montgomery_advanced_2014}. 
 %%PCI is controlled by the complex relationship between the mechanical, thermal, and chemical responses of a fuel rod during operation. Consequently, modeling PCI requires an integral fuel performance code to simulate the fundamental processes of these behaviors. 
