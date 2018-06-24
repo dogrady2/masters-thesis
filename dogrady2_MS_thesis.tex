@@ -655,9 +655,24 @@ In the following sections the procedure for selecting the 1000 fuel pins and des
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The BISON fuel performance code is being developed by \gls{INL} to provide single-rod fuel performance modeling capability to assess best-estimate values of design and safety criteria. 
+BISON is built on \gls{INL}'s \gls{MOOSE} package \cite{gaston_moose:_2009}, which uses the finite element method for geometric representation and a Jacobian Free Newton-Krylov (JFNK) scheme to solve systems of partial differential equations \cite{williamson_multidimensional_2012}. 
+Three primary differential equations are implemented in BISON to determine the response of a nuclear fuel rod to changes in  power.
+These equation describe the conservation of energy, momentum, and species, which are defined by,
+\begin{equation} \label{eqn:bis_eng}
+\rho C_p \frac{\partial T}{\partial t} + \nabla \cdot \vec{q} - e_f \dot{F} =0
+\end{equation} 
+\begin{equation} \label{eqn:bis_mom}
+\nabla \cdot \vec{\sigma} + \rho \vec{f} =0
+\end{equation} 
+\begin{equation} \label{eqn:bis_spec}
+\frac{\partial C}{\partial t} + \nabla \cdot \vec{J} +\lambda C - S =0
+\end{equation} 
+ 
+
 BISON is able to capture complex thermo-mechanical behavior such as PCI failures in PWRs \cite{montgomery_advanced_2014}. 
 %%PCI is controlled by the complex relationship between the mechanical, thermal, and chemical responses of a fuel rod during operation. Consequently, modeling PCI requires an integral fuel performance code to simulate the fundamental processes of these behaviors. 
-BISON is built on \gls{INL}'s \gls{MOOSE} package \cite{gaston_moose:_2009}, which uses the finite element method for geometric representation and a Jacobian Free Newton-Krylov (JFNK) scheme to solve systems of partial differential equations \cite{williamson_multidimensional_2012}. 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
