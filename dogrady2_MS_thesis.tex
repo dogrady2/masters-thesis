@@ -670,15 +670,22 @@ These equation describe the conservation of energy, momentum, and species, which
 $\rho$, $C_p$ and $T$ respectively describe the density, specific heat and temperature of a material subject to a volumetric heat source, described by $e_f$, the energy released per fission, and $\dot{F}$ the volumetric fission rate.
 $\sigma$ describes the Cauchy stress tensor under static equilibrium and a specific body force, $\vec{f}$.
 $C$, $\lambda$, and $S$ are the concentration, decay constant and volumetric source of a particular isotope.
-
 The implementation of these equations allows for non-linear kinematics and non-linear material behavior.
-This accounts fr the temperature dependent thermal and mechanical properties of the nuclear fuel and incorporates the effects of material creep and plasticity.
+This accounts for the temperature dependent thermal and mechanical properties of the nuclear fuel and incorporates the effects of material creep and plasticity.
+Further information on the implementation of material properties, including thermal conductivity, fuel swelling, creep and fission gas release, can be found in \cite{williamson_bison_year,williamson_manual}.
+
+In order to validate the predicted fuel response, a suite of experimental fuel rods have been simulated using BISON.
+Measured quantities including fuel centerline temperature, volume of gas released and pin diameter, are compared at \gls{BOL} and \gls{EOL} \cite{williamson_bison_year}.
+It is consistently shown that BISON is capable of predicting fuel centerline temperatures within 10\% of the measured value.
+Although a 10\% error at elevated fuel temperatures, $\pm$90 $^\circ$C at 900 $^\circ$C, is significant, the measured linear heat rate of the experimental conditions is only accurate within 6\%. 
+This implies that a portion of the error can be contributed to measurement uncertainties, thus the 10\% error is considered quite accurate.
+Fission gas release predictions are typically within a factor of two of the measured values.
+This agreement is considered within the range of measurement error and is common among many fuel performance simulators.
+Although fission gas release and fuel temperature show good agreement with measured quantities, rod diameter tends to be under predicted ath \gls{BOL} and over predicted at \gls{EOL}.
+This discrepancy is believed to be caused by a lack of a relocation recovery model.
+Regardless, BISON has been shown to capture complex thermo-mechanical behavior such as PCI failures in PWRs \cite{montgomery_advanced_2014,capps_pci_2016}.
+
  
-
-
-
-
-BISON is able to capture complex thermo-mechanical behavior such as PCI failures in PWRs \cite{montgomery_advanced_2014}. 
 %%PCI is controlled by the complex relationship between the mechanical, thermal, and chemical responses of a fuel rod during operation. Consequently, modeling PCI requires an integral fuel performance code to simulate the fundamental processes of these behaviors. 
 
 
