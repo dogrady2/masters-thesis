@@ -642,13 +642,23 @@ Due to the stochastic nature of \gls{PCI} induced fuel failure and the randomnes
 Instead, it is desired that ~1000 of the fuel pins be selected and analyzed using the three step process outlined by Lyon et al. \cite{lyon_pci_2013}.
 Similar to the assembly based screening process developed by Kennard et al., the pin based screening process will look at characteristics indicating the fuels conditioning.
 In order to determine the validitiy of this screen process, all fuel pins contained within the quarter core \gls{VERACS} model will simulated using the BISON fuel performance code.
-In the following sections the procedure for selecting the 1000 fuel pins and description of the BISON fuel performance code will be presented.
+In the following sections the procedure for selecting the 1000 fuel pins and a description of the BISON fuel performance code will be presented.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{MPACT Screening Process}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+As described in \cite{capps_evaluation,kennard_pci}, fuel rod response to a change in power is a function of fuels rod's conditioning. 
+The strongest indicator of elevated failure risk is a sudden increase above the conditioned power.
+For cycle start-up ramps, the conditioned power is taken as the linear heat rate a shuffled fuel rod experienced at the end of the previous cycle.
+During a load-follow power maneuver, the conditioned power is taken to be the linear heat rate before the maneuver began.
+The degradation of the conditioned power, or the fuel deconditioning, is not well understood.
+The primary change in the fuel rod state during deconditioning are a reduction of the cladding inner diameter.
+Cladding creep down, which is dependent on temperature, irradiation history, and applied stress, is the primary mechanism responsible for the reduction.  
+For cycle start-up ramps, where the cladding and fuel rods are stored at reduced temperatures, it is typically assumed that deconditioning can be neglected.
+During extended periods of low power operation, where the cladding is exposed to elevated temperatures and stresses, it is possible that the cladding creep rate is not negligible.
+Therefore the conditioned power level could be a function of time spent at reduced power.
+Previous studies \cite{galrtner_survey_1987} have suggested that multiple power ramps have no effect on the conditioned power level of the fuel rod.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{BISON}
@@ -681,12 +691,20 @@ Although a 10\% error at elevated fuel temperatures, $\pm$90 $^\circ$C at 900 $^
 This implies that a portion of the error can be contributed to measurement uncertainties, thus the 10\% error is considered quite accurate.
 Fission gas release predictions are typically within a factor of two of the measured values.
 This agreement is considered within the range of measurement error and is common among many fuel performance simulators.
-Although fission gas release and fuel temperature show good agreement with measured quantities, rod diameter tends to be under predicted ath \gls{BOL} and over predicted at \gls{EOL}.
+Although fission gas release and fuel temperature show good agreement with measured quantities, rod diameter tends to be under predicted at \gls{BOL} and over predicted at \gls{EOL}.
 This discrepancy is believed to be caused by a lack of a relocation recovery model.
 Regardless, BISON has been shown to capture complex thermo-mechanical behavior such as PCI failures in PWRs \cite{montgomery_advanced_2014,capps_pci_2016}.
 
- 
-%%PCI is controlled by the complex relationship between the mechanical, thermal, and chemical responses of a fuel rod during operation. Consequently, modeling PCI requires an integral fuel performance code to simulate the fundamental processes of these behaviors. 
+\gls{CASL} has developed a methodology to perform fuel performance simulations for all fuel rods simulated using \gls{VERACS}.
+The methodology relies on a template input file and a parser.
+Fuel performance calculations can be run coupled with \gls{VERACS}, inline with \gls{VERACS} or standalone.
+In this work fuel performance calculations are run standalone using a 1.5D template.
+Unlike an RZ simulation, the 1.5D template neglects axial conduction of the fuel rod.
+Instead, a stack of 1D pellets are coupled using a common plenum pressure.  
+This geometric configuration has been shown to have consistent results with RZ simulations and is capable of reducing the computational time required for each power ramp. %need citation
+In a standard \gls{PCI} screening process, the results of RZ fuel performance simulation are used to select the axial location for a R-$\theta$ simulation.
+Therefore, with consistent results between the RZ and 1.5D simulations, the reduced run time allows for additional fuel performance calculations to be conducted.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
