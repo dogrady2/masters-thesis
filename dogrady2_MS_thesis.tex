@@ -252,7 +252,7 @@ Additionally, it highlights the need for a coupled multiphysics approach as the 
 %%%%%%
 %Third Paper
 %%%%%%
-One of the computational codes that attempts to incorporate this multiphysics approach is FALCON \cite{falcon_montgomery_1997}.
+One of the computational codes that attempts to incorporate this multiphysics approach is FALCON \cite{montgomery_falcon_1997}.
 FALCON is a fully coupled, thermo-mechanical, two dimensional finite element computer code being developed by ANATECH.
 Building on the material properties provided in MATPRO, FALCON has the ability to simulate $UO_2$ pellet relocation, fission gas release and zircaloy cladding thermal creep.
 
@@ -284,7 +284,7 @@ In order to account for the possibility that cladding stress can drop below the 
 D = \sum \frac{\delta t_i}{\beta \bar{t_i}}
 \end{equation}
 
-In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the Studsvik Over Ramp, Super Ramp and Trans Ramp IV program, as well as, rods from a CEA/OSIRIS ramp program using FALCON \cite{experimental_killeen_2004}. 
+In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the Studsvik Over Ramp, Super Ramp and Trans Ramp IV program, as well as, rods from a CEA/OSIRIS ramp program using FALCON \cite{killeen_experimental_2004}. 
 These simulations were broken into three parts, first a steady state two dimensional, R-Z, depletion simulation is performed using the power histories of each rod.
 The results of these simulations are then used as the initial condition for transient R-Z simulations of the different power ramps under investigation.
 Finally, an R-$\theta$ model containing discrete fuel cracks is created for the axial location which experienced the highest R-Z hoop stress.
@@ -317,7 +317,7 @@ As a result, further validation is needed before deciding if a \gls{CDI} based c
 %%%%%%
 Similar to Lyon et al., Capps et al. \cite{capps_pci_2017} used BISON to investigate fuel rods that failed during the start up ramp of a commercial \gls{PWR}.
 Before Capps et al. could begin applying failure thresholds to fuel rods under investigation, the thresholds needed to be determined using BISON as the thresholds are specific to the performance code.
-To do so, the Studsvik ramp tests were implemented in BISON using a four step process \cite{experimental_killeen_2004}.
+To do so, the Studsvik ramp tests were implemented in BISON using a four step process \cite{killeen_experimental_2004}.
 The first three steps follow the same methodology used by Lyon et al, R-Z depletion followed by an R-Z fuel performance calculation, ending with a R-$\theta$ fuel performance calculation at the axial location with the highest hoop stress.
 The fourth step, which is unique to BISON, is a three dimensional R-$\theta$-Z fuel performance simulation of the entire rod. %check to make sure entire rod was simlated
 Although BISON is capable of computing \gls{CDI}, the authors only report the failure thresholds based on the peak cladding hoop stress.
@@ -349,7 +349,7 @@ Even with this reduction in failure risk, fuel failure was still experienced dur
 This suggests that pellet defects are a major contributor to fuel failure during power maneuvers. 
 Using the restrictive power history developed by Exelon, Capps et al. performed a sensitivity study on the maximum clad hoop stress as a function of \gls{MPS} width.
 
-Fuel specifications limit the dimension of a \gls{MPS} to 60 mils, but widths up to 125 mils have been observed during \gls{PIE} \cite{effect_aleshin_2010}.
+Fuel specifications limit the dimension of a \gls{MPS} to 60 mils, but widths up to 125 mils have been observed during \gls{PIE} \cite{aleshin_effect_2010}.
 For this reason, \gls{MPS} with lengths ranging from 60 to 140 mils were simulated using 2D and 3D BISON simulations. 
 The hoop stress resulting from a \gls{MPS} is a result of pellet thermal expansion. 
 As the pellet expands the missing face does not exert an outward force on the cladding, causing the cladding to bend at the edges of the \gls{MPS}.
@@ -369,7 +369,7 @@ This prevents a meaningful comparison on the effect fuel temperature has on the 
 %Fifth Paper
 %%%%%%
 
-In order to more comprehensively understand the effect pellet defects have on the cladding, Capps et al. studied the individual effects of fuel cracks and \gls{MPS}\cite{capps_evaluation_2017}.
+In order to more comprehensively understand the effect pellet defects have on the cladding, Capps et al. studied the individual effects of fuel cracks and \gls{MPS} \cite{capps_evaluation_2016}.
 The stress on the cladding caused by pellet cracks is a function of the crack length and the spacing in between cracks.
 As the crack spacing increases within the fuel pellet the number of cracks within the pellet decreases.
 This causes the opening of a single pellet to increase, which increases the tangential stress on the cladding at the cracks opening.
