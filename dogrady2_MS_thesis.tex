@@ -129,7 +129,7 @@ With insufficient control over the flux profile local linear heat rates could ex
 
 In order to mitigate this possibility, \gls{PWR} use the critical boron concentration to modify the power level while making minor control rod insertion and inlet temperature modifications to manage the core \gls{AO} \cite{meyer_improved_1978}.  
 Although it is ensured that safety margins are maintained, the insertion of control rods, in addition to the response of the local Xenon concentrations, can lead to significant changes in local pin powers throughout the core.
-Changes in local power can cause fuel to swell or contract, due to thermal expansion \cite{gartner_power_1984}. %need citation
+Changes in local power can cause fuel to swell or contract, due to thermal expansion \cite{gartner_power_1984}. 
 If a utility chooses to ramp down the reactor during times of low demand, or high supply, the fuel pellets will contract.
 When the decision is made to return the reactor back to full power, the rate at which the power can be increased is limited by the thermal expansion of the fuel pellets \cite{gartner_power_1984}.
 A sudden expansion of the fuel pellet has the potential to exert additional stress on the cladding, commonly referred to as \gls{PCMI}.
@@ -252,8 +252,8 @@ Additionally, it highlights the need for a coupled multiphysics approach as the 
 %%%%%%
 %Third Paper
 %%%%%%
-One of the computational codes that attempts to incorporate this multiphysics approach is FALCON. %Need citation
-FALCON is a fully coupled, thermo-mechanical, two dimensional finite element computer code being developed by \gls{EPRI}.
+One of the computational codes that attempts to incorporate this multiphysics approach is FALCON \cite{falcon_montgomery_1997}.
+FALCON is a fully coupled, thermo-mechanical, two dimensional finite element computer code being developed by ANATECH.
 Building on the material properties provided in MATPRO, FALCON has the ability to simulate $UO_2$ pellet relocation, fission gas release and zircaloy cladding thermal creep.
 
 FALCON has been extensively benchmarked and is commonly used by contractors and utilities to mitigate the risk of \gls{PCI} induced fuel failure.
@@ -284,7 +284,7 @@ In order to account for the possibility that cladding stress can drop below the 
 D = \sum \frac{\delta t_i}{\beta \bar{t_i}}
 \end{equation}
 
-In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the Studsvik Over Ramp, Super Ramp and Trans Ramp IV program, as well as, rods from a CEA/OSIRIS ramp program using FALCON. %need citation 
+In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the Studsvik Over Ramp, Super Ramp and Trans Ramp IV program, as well as, rods from a CEA/OSIRIS ramp program using FALCON \cite{experimental_killeen_2004}. 
 These simulations were broken into three parts, first a steady state two dimensional, R-Z, depletion simulation is performed using the power histories of each rod.
 The results of these simulations are then used as the initial condition for transient R-Z simulations of the different power ramps under investigation.
 Finally, an R-$\theta$ model containing discrete fuel cracks is created for the axial location which experienced the highest R-Z hoop stress.
@@ -317,7 +317,7 @@ As a result, further validation is needed before deciding if a \gls{CDI} based c
 %%%%%%
 Similar to Lyon et al., Capps et al. \cite{capps_pci_2017} used BISON to investigate fuel rods that failed during the start up ramp of a commercial \gls{PWR}.
 Before Capps et al. could begin applying failure thresholds to fuel rods under investigation, the thresholds needed to be determined using BISON as the thresholds are specific to the performance code.
-To do so, the Studsvik ramp tests were implemented in BISON using a four step process. %need citation
+To do so, the Studsvik ramp tests were implemented in BISON using a four step process \cite{experimental_killeen_2004}.
 The first three steps follow the same methodology used by Lyon et al, R-Z depletion followed by an R-Z fuel performance calculation, ending with a R-$\theta$ fuel performance calculation at the axial location with the highest hoop stress.
 The fourth step, which is unique to BISON, is a three dimensional R-$\theta$-Z fuel performance simulation of the entire rod. %check to make sure entire rod was simlated
 Although BISON is capable of computing \gls{CDI}, the authors only report the failure thresholds based on the peak cladding hoop stress.
@@ -349,7 +349,7 @@ Even with this reduction in failure risk, fuel failure was still experienced dur
 This suggests that pellet defects are a major contributor to fuel failure during power maneuvers. 
 Using the restrictive power history developed by Exelon, Capps et al. performed a sensitivity study on the maximum clad hoop stress as a function of \gls{MPS} width.
 
-Westinghouse specifications limit the dimension of a \gls{MPS} to 60 mils, but widths up to 125 mils have been observed during \gls{PIE}. %need citation
+Fuel specifications limit the dimension of a \gls{MPS} to 60 mils, but widths up to 125 mils have been observed during \gls{PIE} \cite{effect_aleshin_2010}.
 For this reason, \gls{MPS} with lengths ranging from 60 to 140 mils were simulated using 2D and 3D BISON simulations. 
 The hoop stress resulting from a \gls{MPS} is a result of pellet thermal expansion. 
 As the pellet expands the missing face does not exert an outward force on the cladding, causing the cladding to bend at the edges of the \gls{MPS}.
@@ -373,12 +373,12 @@ In order to more comprehensively understand the effect pellet defects have on th
 The stress on the cladding caused by pellet cracks is a function of the crack length and the spacing in between cracks.
 As the crack spacing increases within the fuel pellet the number of cracks within the pellet decreases.
 This causes the opening of a single pellet to increase, which increases the tangential stress on the cladding at the cracks opening.
-It is typically found that commercial fuel has six to ten radial cracks, which helps to reduce the stress on the cladding. %need citation
+It is typically found that commercial fuel has six to ten radial cracks, which helps to reduce the stress on the cladding \cite{oguma_cracking_1983}. 
 
 The length of a fuel pellet crack characterizes the compliance of the fuel pellet to its manufactured cylindrical shape.
 As the crack length increases, the fuel pellet is less compliant and creates a shear stress on the cladding.
 Capps et al. found that the shear stress exerted begins to saturate when the crack length approaches 50\% of the pellet radius.
-Although the stress on the cladding has saturated, the stress at the tip of the crack is larger than the fracture strength at a length of 50\%. %Need word here
+Although the stress on the cladding has saturated, the stress at the tip of the crack is larger than the fracture strength.
 This suggests that the crack will continue to propagate until it has reached approximately 70\% of the pellet radius.
 
 In most cases, \gls{MPS} are accompanied by cracks.
@@ -648,17 +648,18 @@ In the following sections the procedure for selecting the 1000 fuel pins and a d
 \section{MPACT Screening Process}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-As described in \cite{capps_evaluation,kennard_pci}, fuel rod response to a change in power is a function of fuels rod's conditioning. 
+As described in \cite{capps_evaluation,kennard_pci}, fuel rod response to a change in power is a function of fuel rod's conditioning. 
 The strongest indicator of elevated failure risk is a sudden increase above the conditioned power.
 For cycle start-up ramps, the conditioned power is taken as the linear heat rate a shuffled fuel rod experienced at the end of the previous cycle.
 During a load-follow power maneuver, the conditioned power is taken to be the linear heat rate before the maneuver began.
+
 The degradation of the conditioned power, or the fuel deconditioning, is not well understood.
 The primary change in the fuel rod state during deconditioning are a reduction of the cladding inner diameter.
 Cladding creep down, which is dependent on temperature, irradiation history, and applied stress, is the primary mechanism responsible for the reduction.  
 For cycle start-up ramps, where the cladding and fuel rods are stored at reduced temperatures, it is typically assumed that deconditioning can be neglected.
 During extended periods of low power operation, where the cladding is exposed to elevated temperatures and stresses, it is possible that the cladding creep rate is not negligible.
 Therefore the conditioned power level could be a function of time spent at reduced power.
-Previous studies \cite{galrtner_survey_1987} have suggested that multiple power ramps have no effect on the conditioned power level of the fuel rod.  
+A previous study \cite{galrtner_survey_1987} suggests that multiple power ramps have no effect on the conditioned power level of the fuel rod.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{BISON}
@@ -682,10 +683,10 @@ $\sigma$ describes the Cauchy stress tensor under static equilibrium and a speci
 $C$, $\lambda$, and $S$ are the concentration, decay constant and volumetric source of a particular isotope.
 The implementation of these equations allows for non-linear kinematics and non-linear material behavior.
 This accounts for the temperature dependent thermal and mechanical properties of the nuclear fuel and incorporates the effects of material creep and plasticity.
-Further information on the implementation of material properties, including thermal conductivity, fuel swelling, creep and fission gas release, can be found in \cite{williamson_bison_year,williamson_manual}.
+Further information on the implementation of material properties, including thermal conductivity, fuel swelling, creep and fission gas release, can be found in \cite{williamson_validating_2016,hales_bison_2015}.
 
 In order to validate the predicted fuel response, a suite of experimental fuel rods have been simulated using BISON.
-Measured quantities including fuel centerline temperature, volume of gas released and pin diameter, are compared at \gls{BOL} and \gls{EOL} \cite{williamson_bison_year}.
+Measured quantities including fuel centerline temperature, volume of gas released and pin diameter, are compared at \gls{BOL} and \gls{EOL} \cite{williamson_validating_2016}.
 It is consistently shown that BISON is capable of predicting fuel centerline temperatures within 10\% of the measured value.
 Although a 10\% error at elevated fuel temperatures, $\pm$90 $^\circ$C at 900 $^\circ$C, is significant, the measured linear heat rate of the experimental conditions is only accurate within 6\%. 
 This implies that a portion of the error can be contributed to measurement uncertainties, thus the 10\% error is considered quite accurate.
@@ -699,11 +700,13 @@ Regardless, BISON has been shown to capture complex thermo-mechanical behavior s
 The methodology relies on a template input file and a parser.
 Fuel performance calculations can be run coupled with \gls{VERACS}, inline with \gls{VERACS} or standalone.
 In this work fuel performance calculations are run standalone using a 1.5D template.
+This means that the linear heat rate and coolant temperature predicted using \gls{VERACS} are applied as boundary conditions for the BISON calculations.
 Unlike an RZ simulation, the 1.5D template neglects axial conduction of the fuel rod.
-Instead, a stack of 1D pellets are coupled using a common plenum pressure.  
-This geometric configuration has been shown to have consistent results with RZ simulations and is capable of reducing the computational time required for each power ramp. %need citation
+Rather, a stack of 1D pellets are coupled using a common plenum pressure.  
+This geometric configuration has been shown to significantly reduce the computational time required for each power ramp \cite{gardner_review_2017}.
+Due to the fact that the RZ simulation commonly used for standalone BISON calculations uses a smeared pellet mesh, where individual pellets are not explicitly modeled, the 1.5D results are expected to have consistent predictions.
 In a standard \gls{PCI} screening process, the results of RZ fuel performance simulation are used to select the axial location for a R-$\theta$ simulation.
-Therefore, with consistent results between the RZ and 1.5D simulations, the reduced run time allows for additional fuel performance calculations to be conducted.
+Therefore, with consistent boundary conditions between the RZ and 1.5D simulations, the reduced run time allows for additional fuel performance calculations to be conducted.
 
 
 
