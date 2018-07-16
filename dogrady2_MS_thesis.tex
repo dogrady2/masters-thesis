@@ -641,25 +641,31 @@ The main focus of this work is to predict the limiting pin within a commercial \
 Due to the stochastic nature of \gls{PCI} induced fuel failure and the randomness of pellet defects throughout the core, determining a single pin out of the approximately 60,000 present is unrealistic.
 Instead, it is desired that ~1000 of the fuel pins be selected and analyzed using the three step process outlined by Lyon et al. \cite{lyon_pci_2009}.
 Similar to the assembly based screening process developed by Kennard et al., the pin based screening process will look at characteristics indicating the fuels conditioning.
-In order to determine the validitiy of this screen process, all fuel pins contained within the quarter core \gls{VERACS} model will simulated using the BISON fuel performance code.
+In order to determine the validitiy of this screening process, all fuel pins contained within the quarter core \gls{VERACS} model will simulated using the BISON fuel performance code.
 In the following sections the procedure for selecting the 1000 fuel pins and a description of the BISON fuel performance code will be presented.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{MPACT Screening Process}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-As described in \cite{capps_evaluation_2016,kennard_pci_2016}, fuel rod response to a change in power is a function of fuel rod's conditioning. 
-The strongest indicator of elevated failure risk is a sudden increase above the conditioned power.
+As described in \cite{capps_evaluation_2016,kennard_pci_2016}, fuel rod response to a change in power is a function of the fuel rod's conditioning. 
+In the presence of significant fuel exposure and/or operation at a high linear heat rate, the strongest indicator of elevated failure risk is a sudden increase above the conditioned power.
 For cycle start-up ramps, the conditioned power is taken as the linear heat rate a shuffled fuel rod experienced at the end of the previous cycle.
-During a load-follow power maneuver, the conditioned power is taken to be the linear heat rate before the maneuver began.
+During a load-follow operation, the conditioned power is taken to be the linear heat rate experienced while operating at full power before the maneuver began.
+For example, in Figure \ref{lf_his1} the linear heat rates calculated at hour 175 are assumed to be the conditioned linear heat rates for the following two power maneuvers. 
+To quantify the risk of \gls{PCI} induced fuel failure
+
 
 The degradation of the conditioned power, or the fuel deconditioning, is not well understood.
-The primary change in the fuel rod state during deconditioning are a reduction of the cladding inner diameter.
+The primary change in the fuel rod during deconditioning is a reduction of the cladding inner diameter.
 Cladding creep down, which is dependent on temperature, irradiation history, and applied stress, is the primary mechanism responsible for the reduction.  
 For cycle start-up ramps, where the cladding and fuel rods are stored at reduced temperatures, it is typically assumed that deconditioning can be neglected.
 During extended periods of low power operation, where the cladding is exposed to elevated temperatures and stresses, it is possible that the cladding creep rate is not negligible.
 Therefore the conditioned power level could be a function of time spent at reduced power.
 A previous study \cite{galrtner_survey_1987} suggests that multiple power ramps have no effect on the conditioned power level of the fuel rod.  
+However, the results presented by Stimpson \cite{stimpson_demonstration_2017} on continuous load-following for a single fuel pin suggest that changes in burnup have a strong effect on the maximum clad hoop stress.
+ 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{BISON}
