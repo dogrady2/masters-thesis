@@ -650,21 +650,35 @@ In the following sections the procedure for selecting the 1000 fuel pins and a d
 
 As described in \cite{capps_evaluation_2016,kennard_pci_2016}, fuel rod response to a change in power is a function of the fuel rod's conditioning. 
 In the presence of significant fuel exposure and/or operation at a high linear heat rate, the strongest indicator of elevated failure risk is a sudden increase above the conditioned power.
-For cycle start-up ramps, the conditioned power is taken as the linear heat rate a shuffled fuel rod experienced at the end of the previous cycle.
-During a load-follow operation, the conditioned power is taken to be the linear heat rate experienced while operating at full power before the maneuver began.
-For example, in Figure \ref{lf_his1} the linear heat rates calculated at hour 175 are assumed to be the conditioned linear heat rates for the following two power maneuvers. 
-To quantify the risk of \gls{PCI} induced fuel failure
+To quantify the risk of \gls{PCI} induced fuel failure, a weighted change in linear heat rate, $R$, is calculated for each fuel pin,
+\begin{equation}
+R_{i,j,k}^{t} = \frac{\left( lhr_{i,j,k}^t-lhr_{i,j,k}^{t_{con}}\right)}{lhr_{i,j,k}^{t_{con}}} b_{i,j,k}^t \cdot lhr_{i,j,k}^{t}
+\end{equation}
+where $lhr$ and $b$ are the MPACT predicted linear heat rate and burnup for fuel pin ($i$,$j$) at the axial location $k$ and time $t$, respectively.
+For cycle start-up ramps, the conditioned power is taken as the linear heat rate a shuffled fuel rod experienced at the end of the previous cycle, $lhr_{i_{prev},j_{prev},k}^{t_{end}}$.
+During a load-follow operation, the conditioned power is taken to be the linear heat rate experienced while operating at full power before the maneuver began, $lhr_{i,j,k}^{t_{con}}$.
+For example, in Figure \ref{lf_his1} the linear heat rates calculated at hour 175 are assumed to be the conditioned linear heat rates for the following two power maneuvers, $t_{con}=150$. 
 
+The weighted change in linear heat rate accounts for all parameters that effect \gls{PCI}.
+The relative change from conditioned power determines if elevated stress are being applied on the claddings inner surface.
+Positive changes suggest that the fuel pellet has expanded, applying a tensile hoop stress on the cladding.
+Negative changes suggest that the fuel pellet has contracted, and fuel failure is unlikely.
+In the presence of a closed gap, the thermal expansion of the fuel pellet will cause elevated stresses on the cladding.
+Due to the fact that gap width is a complex function of power history, the fuels linear heat rate and burnup are used to determine the likelihood the gap has closed.
+When the fuel's burnup and linear heat rate are high it is unlikely that the gap is open.
+Additionally, the fuel's burnup suggests the presence of fission products on the clads inner surface.
+When multiplied, these three parameters indicated the fuel rods that are under elevated stress and have the potential to fail due to \gls{PCI}.
 
+An important parameter to consider is the effect prolonged load follow operation will have on the fuel's response.
 The degradation of the conditioned power, or the fuel deconditioning, is not well understood.
 The primary change in the fuel rod during deconditioning is a reduction of the cladding inner diameter.
 Cladding creep down, which is dependent on temperature, irradiation history, and applied stress, is the primary mechanism responsible for the reduction.  
-For cycle start-up ramps, where the cladding and fuel rods are stored at reduced temperatures, it is typically assumed that deconditioning can be neglected.
+For cycle start-up ramps, where the cladding and fuel rods are stored at reduced temperatures, deconditioning can be neglected. %maybe have a reference for this
 During extended periods of low power operation, where the cladding is exposed to elevated temperatures and stresses, it is possible that the cladding creep rate is not negligible.
 Therefore the conditioned power level could be a function of time spent at reduced power.
 A previous study \cite{galrtner_survey_1987} suggests that multiple power ramps have no effect on the conditioned power level of the fuel rod.  
 However, the results presented by Stimpson \cite{stimpson_demonstration_2017} on continuous load-following for a single fuel pin suggest that changes in burnup have a strong effect on the maximum clad hoop stress.
- 
+This effect is taken into consideration by the burnup factor in the weighted change in linear heat rate.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
