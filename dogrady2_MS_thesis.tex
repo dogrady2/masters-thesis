@@ -738,6 +738,20 @@ Therefore, with consistent boundary conditions between the RZ and 1.5D simulatio
 \chapter{Results and Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Using the results of the load-follow and  cycles depletion simulations, stand-alone bison inputs were created for all fuel pins contained within cycle 21. 
+These inputs modeled each pins detailed power history, which accounted for core shuffling and cycle outages. 
+An example of a shuffled pins power history is shown in Figure \ref{fig:single_pin}, where the pin was present towards the center core during cycles 19 and 20, and was then moved to the periphery of the core during cycle 21. 
+Of the 14,784 found in the quarter core model of cycle 21, all but approximately 150 fuel pins ran to completion.
+After adjusting a radial biasing parameter within BISON, the 150 fuel pins ran to completion.
+This biasing parameter causes the fuel pin's simulated power output to exceed the specified input power.
+As a result, many of the parameters of interest, i.e. burnup, hoops stress, and gap thickness, may be overestimated.
+This behavior has been reported to the BISON developers and requires further investigation. 
+Nonetheless, the maximum clad hoop stress within these pins is similar to the surrounding fuel pins, allowing the screening process to be applicable.
+
+In the remaining sections the BISON fuel performance and MPACT screening results for the first 24 of operation are presented.
+The BISON fuel performance results are broken into four sections, the initial power ramp, and the first, second and third period of load-follow operation.
+The MPACT screening results follow the same format but the initial power ramp is not considered. 
+Core designers spend a significant amount of time looking at the initial power ramp, therefor it is assumed a well accepted screening process has already been developed for the initial ramp.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{BISON}
@@ -778,7 +792,7 @@ Therefore, with consistent boundary conditions between the RZ and 1.5D simulatio
 \includegraphics[trim={0 4cm 0 4cm},clip,width=\linewidth]{./Figures/bison_res/PR2_MGD.pdf} \\
 \end{tabular}
 \caption{BISON predicted maximum clad hoop stress $[MPa]$ (top) and minimum gap distance $[ \mu m]$ (bottom) for the second load-follow power maneuver.}
-\label{fig:bison_PR1}
+\label{fig:bison_PR2}
 \end{figure}
 \end{landscape}
 
@@ -792,7 +806,7 @@ Therefore, with consistent boundary conditions between the RZ and 1.5D simulatio
 \includegraphics[trim={0 4cm 0 4cm},clip,width=\linewidth]{./Figures/bison_res/PR3_MGD.pdf} \\
 \end{tabular}
 \caption{BISON predicted maximum clad hoop stress $[MPa]$ (top) and minimum gap distance $[ \mu m]$ (bottom) for the third load-follow power maneuver.}
-\label{fig:bison_PR1}
+\label{fig:bison_PR3}
 \end{figure}
 \end{landscape}
 
@@ -803,7 +817,7 @@ Therefore, with consistent boundary conditions between the RZ and 1.5D simulatio
 \includegraphics[trim={0 4cm 0 4cm},clip,width=\linewidth]{./Figures/bison_res/PR4_MGD.pdf} \\
 \end{tabular}
 \caption{BISON predicted maximum clad hoop stress $[MPa]$ (top) and minimum gap distance $[ \mu m]$ (bottom) for the forth load-follow power maneuver.}
-\label{fig:bison_PR1}
+\label{fig:bison_PR4}
 \end{figure}
 \end{landscape}
 
@@ -815,7 +829,7 @@ Therefore, with consistent boundary conditions between the RZ and 1.5D simulatio
 \includegraphics[trim={0 4cm 0 4cm},clip,width=\linewidth]{./Figures/bison_res/PR5_MGD.pdf} \\
 \end{tabular}
 \caption{BISON predicted maximum clad hoop stress $[MPa]$ (top) and minimum gap distance $[ \mu m]$ (bottom) for the fifth load-follow power maneuver.}
-\label{fig:bison_PR1}
+\label{fig:bison_PR5}
 \end{figure}
 \end{landscape}
 \subsection{Load-follow Ramp 3}
@@ -841,7 +855,7 @@ Therefore, with consistent boundary conditions between the RZ and 1.5D simulatio
 \includegraphics[trim={0 4cm 0 4cm},clip,width=\linewidth]{./Figures/screening/PR2.pdf} \\
 \end{tabular}
 \caption{Weighted change in linear heat rate for the first (top) and second (bottom) load-follow power maneuver.}
-\label{fig:bison_PR1}
+\label{fig:lf_PR1}
 \end{figure}
 \end{landscape}
 
@@ -853,7 +867,7 @@ Therefore, with consistent boundary conditions between the RZ and 1.5D simulatio
 \includegraphics[trim={0 4cm 0 4cm},clip,width=\linewidth]{./Figures/screening/PR4.pdf} \\
 \end{tabular}
 \caption{Weighted change in linear heat rate for the third (top) and forth (bottom) load-follow power maneuver.}
-\label{fig:bison_PR1}
+\label{fig:lf_PR2}
 \end{figure}
 \end{landscape}
 
@@ -865,7 +879,7 @@ Therefore, with consistent boundary conditions between the RZ and 1.5D simulatio
 \includegraphics[trim={0 4cm 0 4cm},clip,width=\linewidth]{./Figures/screening/PR5.pdf} \\
 \end{tabular}
 \caption{Weighted change in linear heat rate for the fifth (top) and forth (bottom) load-follow power maneuver.}
-\label{fig:bison_PR1}
+\label{fig:lf_PR3}
 \end{figure}
 \end{landscape}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
