@@ -26,14 +26,14 @@
 This is a comprehensive study on the effect load-follow operation has on fuel failure risk in a PWR. 
 PWR1, a commercial reactor that performed load-follow power maneuvers in cycle 21, was modeled using VERA-CS starting in cycle 17. 
 The effects of a jump-in approach were shown to be negligible after two cycles of standard depletion.
- Both low power physics tests and critical boron comparisons show excellent agreement between the VERA-CS predictions and the plant measured data after cycle 19.
-In addition to cycle depletion, the first 24 days of cycle 21, containing five load-follow power maneuvers, were simulated using hourly depletion steps. 
-VERA-CS predictions of this time period showed an overestimation of the axial offset behavior during the load-follow operation, but the overall reactivity of the core showed good agreement.
+Both low power physics tests and critical boron comparisons show excellent agreement between the VERA-CS predictions and the plant measured data after cycle 19.
+In addition to cycle depletion, five load-follow power maneuvers in the first 24 days of cycle 21 were simulated using hourly depletion steps. 
+VERA-CS predictions of this time period showed an overestimation of the axial offset behavior during the load-follow operation but the overall reactivity of the core showed good agreement.
 
-The linear heat rate and coolant temperature calculated by VERA-CS were used as boundary conditions for BISON fuel performance.
+The linear heat rate and coolant temperature calculated by VERA-CS were used as boundary conditions for BISON fuel performance calculations.
 Using the maximum hoop stress as the indicator of fuel failure risk, the different load-follow power maneuvers were compared to the initial start-up ramp.
-The maximum clad hoop stress occurred during the start-up ramp and was estimated to be 94 MPa, the subsequent maneuvers showed similar magnitudes, regardless of the change in power. 
-No correlation was observed between the characteristics of load-follow power maneuver and the resulting maximum clad hoop stress. 
+The maximum clad hoop stress occurred during the start-up ramp and was estimated to be 94 MPa, the subsequent maneuvers showed similar magnitudes regardless of the change in power. 
+No correlation was observed between the characteristics of the load-follow power maneuver and the resulting maximum clad hoop stress. 
 Neither the depth of the decrease in power, hold period, nor intermediate power steps showed a variation in the maximum clad hoop stress observed after a return to full power ramp this early in the cycle.
 
 To reduce the number of fuel performance calculations required to determine the safety of a power maneuver, a pin based screening process based on a weighted change in conditioned power was developed.
@@ -52,7 +52,7 @@ By selecting the top 1000 fuel rods showing a positive weighted change in linear
 \chapter*{Acknowledgments}
 
 This project would not have been possible without the support of many people. 
-Many thanks to my adviser, Tomasz Kozlowski and group members, Majdi, Chen, Katarzyna, Guojun and Travis, who read my numerous revisions and listened to all of the obstacles that arose during this project.
+Many thanks to my adviser, Tomasz Kozlowski and group members, Majdi, Chen, Katarzyna, Guojun, Travis, and Dean who read my numerous revisions and listened to all of the obstacles that arose during this project.
 Also many thanks to the ORNL and UM staff members, Andrew Godfrey, Shane Stimpson, Kevin Clarno, Mark Baird, Scott Palmtag, Brendan Kochunas, Daniel Jaybay and Thomas Downar, who offered guidance and support.
 Invaluable support was also received from the BISON team, including Richard Williamson and Russel Gardner.
 And finally, thanks to my girlfriend, parents, and numerous friends who endured this long process with me, always offering support and distractions.
@@ -126,52 +126,52 @@ In the \gls{US}, nuclear power generation has high fixed costs and low variable 
 As a result, utilities have traditionally sought to operate nuclear stations at full power from \gls{BOC} to \gls{EOC}. 
 More recently, the deregulation of the energy market and the emergence of intermittent renewable energy sources have caused load-follow operation to become a more attractive option for nuclear generation. 
 
-The deregulation of the energy market has forced utilities to compete against each other to sell electricity within a region.
+The deregulation of the energy market has forced utilities to compete against each other to sell electricity regionally.
 The beneficiary of this competition are the customers, who are guaranteed fair prices for electricity and will not be footing the bill for an inefficient/uneconomical utility project. %need citation
 Nuclear stations have typically been able to economically compete within deregulated markets because the typical plant lifetime of at least 20 years allows owners to spread out the fixed costs.
-Recently, the low price of natural gas and government subsidized renewable energy sources, such as wind and solar, have made nuclear stations appear uneconomic.   
+Recently, the low price of natural gas and government subsidized renewable energy sources, such as wind and solar, have made nuclear stations appear less profitable.   
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background and Motivation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In 2016, the \gls{US} had approximately 7\% of its total electricity generation coming from wind and solar power \cite{u.s_energy_information_administration_electricity_2016}. 
-This share is likely to increase as the \gls{US} continues to move away from fossil fuels and towards a "greener" energy future.
+This share is likely to increase as the \gls{US} continues to move away from fossil fuels and towards a ``greener" energy future.
 As a result of this increase, in combination with the deregulation of the energy market, the price of electricity has become volatile. 
-At certain times, the price of selling electricity within a region can even become negative, due to a sudden increase in renewable energy output and a low market demand \cite{paraschiv_impact_2014}. 
-In some areas, negative electricity prices are further increased due to the fact that large generating facilities would rather sell at a loss to avoid decreasing their power level. 
+At certain times, the price of selling electricity within a region can even become negative due to a sudden increase in renewable energy output and a low market demand \cite{paraschiv_impact_2014}. 
+In some areas, negative electricity prices are further increased due to the fact that large generating facilities would rather sell at a loss than decrease their power level. 
 This preference is caused by the high capital cost and relatively low variable costs of large generating facilities \cite{lokhov_load-following_2011}.
 
 Nuclear stations are typically one of these large generating facilities.
-As a result of the large construction costs and the fixed number of staff members that must be on site at all times, most utilities prefer to keep a reactor at full power, as it is easiest to maintain constant power. 
-If instead of remaining at full power, a nuclear station operated in load-following mode, could this increase the efficiency of the plant?
-During load-follow operation, a nuclear station will vary its power output in response to the anticipated demand to better suit the market needs, stabilizing the price of electricity.
-Theoretically, the currently operating plants were all designed with the maneuverability to respond to such change in demand \cite{lokhov_technical_2011}.
+As a result of the large construction costs and the fixed number of required on-site staff members, most utilities prefer to keep a reactor at full power, as it is easiest to maintain constant power. 
+If a nuclear station operated in load-follow mode instead of remaining at full power, the efficient of the plant would likely increase.
+This is because during load-follow operation, a nuclear station will vary its power output in response to the anticipated demand to better suit the market needs, stabilizing the price of electricity.
+Theoretically, the currently operating U.S. plants were all designed with the maneuverability to respond to such change in demand \cite{lokhov_technical_2011}.
 In fact, many of the reactors in France already participate in load-following maneuvers with the help of grey control rods \cite{lokhov_technical_2011}.
 Grey control rods are similar to standard \gls{PWR} control rods but have significantly less rod worth \cite{yousefpour_improvement_2000}.
 The low rod worth allows them to be used for reactivity control without putting significant stress on the surrounding fuel. 
-In the \gls{US}, grey rods are not present in \gls{PWR}, increasing the complexity of load-follow operation \cite{lokhov_technical_2011}.
+In the \gls{US}, grey rods are not present in \gls{PWR}, which introduces additional stresses on the fuel cladding, increasing the complexity of load-follow operation \cite{lokhov_technical_2011}.
   
-Previous load follow demonstrations have been performed in \gls{US} \gls{PWR}s.
+Previous load follow demonstrations have been performed on \gls{US} \gls{PWR}s.
 In the 1970's Indian Point underwent a series of load-follow power maneuvers, where 50 \% power swings were performed using ramp rates that varied between 0.25 and 5.0 \% power/minute \cite{sipush_load-follow_1976}.
-The primary purpose of this study was to demonstrate the plants ability to maintain control over the \gls{AO} during/following the power maneuvers. 
+The primary purpose of this study was to demonstrate the plant's ability to maintain control over the \gls{AO} during/following the power maneuvers. 
 If control over the \gls{AO} is lost, control rods may not have the strength to effect the core power distribution in the presence of local xenon concentrations \cite{sipush_load-follow_1976}.
-With insufficient control over the flux profile local linear heat rates could exceed safety margins.
+With insufficient control over the flux profile, local linear heat rates could exceed safety margins.
 
-In order to mitigate this possibility, \gls{PWR} use the critical boron concentration to modify the power level while making minor control rod insertion and inlet temperature modifications to manage the core \gls{AO} \cite{meyer_improved_1978}.  
-Even though safety margins are maintained, the insertion of control rods, in addition to the response of the local xenon concentrations, can lead to significant changes in local pin powers throughout the core.
-Changes in local power can cause fuel to swell or contract, due to thermal expansion \cite{gartner_power_1984}. 
-If a utility chooses to ramp down the reactor during times of low demand, or high supply, the fuel pellets can contract.
+In order to mitigate this possibility, \gls{PWR} primarily use the critical boron concentration to modify the power level while making minor control rod insertion and inlet temperature modifications to manage the core \gls{AO} \cite{meyer_improved_1978}.  
+Even though safety margins are maintained, the insertion of control rods and the response of the local xenon concentrations can lead to significant changes in local pin powers throughout the core.
+Due to thermal expansion changes in local power can cause fuel to swell or contract \cite{gartner_power_1984}. 
+If a utility chooses to ramp down the reactor during times of excess high supply the fuel pellets can contract.
 When the decision is made to return the reactor back to full power, the rate at which the power can be increased is limited by the thermal expansion of the fuel pellets \cite{gartner_power_1984}.
 A sudden expansion of the fuel pellet has the potential to exert additional stress on the cladding, commonly referred to as \gls{PCMI}.
-\gls{PCMI} can lead to fuel failure by \gls{PCI}, and has been extensively investigated since the early 1970s.
+\gls{PCMI} can lead to fuel failure, fission product release, by \gls{PCI} and has been extensively investigated since the early 1970s.
 
 \subsection{Pellet Clad Interaction}
 
 \gls{PCI} induced fuel failure is the result of \gls{PCMI} and environmental contributions.
 \gls{PCMI} is best described as the material interaction at the pellet-clad interface which creates a stress state on the fuel cladding \cite{kennard_pci_2016}.
 This stress state is normally quantified using the maximum cladding hoop stress, which occurs at the inner radius of the cladding.
-In a cylindrical fuel rod, hoop stress, shown in Figure \ref{fig:hoop_stress_cite}, is a function of the pressure being exerted on the cladding through fuel pellet contact and the pressure difference between the gap and coolant.
+In a cylindrical fuel rod, hoop stress, shown in Figure \ref{fig:hoop_stress_cite}, is a function of the pressure being exerted on the cladding through fuel pellet contact as well as the pressure difference between the gap and coolant.
 
 \begin{figure}
 \begin{center}
@@ -183,24 +183,24 @@ In a cylindrical fuel rod, hoop stress, shown in Figure \ref{fig:hoop_stress_cit
 
 To determine the magnitude of the cladding hoop stress the shape of the fuel pellets mush be accurately known.
 The shape of the fuel pellets controls the volume of plenum, influencing the gap pressure, and in the case that the gap has closed, the fuel pellet's shape is restrained by the cladding. 
-Many different factors contribute to the shape of the fuel pellet, including temperature of the fuel, fission product inventory, power history and manufacturing characteristics.
-During power maneuvers, the fuel temperature is the most significant, as it determines the degree to which the fuel expands.
+Many different factors contribute to the shape of the fuel pellet including temperature of the fuel, fission product inventory, power history and manufacturing characteristics.
+During power maneuvers, the fuel temperature is the most significant as it determines the degree to which the fuel expands.
 To further complicate the geometry of the fuel pellet, nonuniform thermal expansion during the initial ramp to power causes radial cracks to form within a pellet \cite{capps_evaluation_2016}.
-These cracks, in addition with thermal expansion, lead to shear forces and hoop stress on the inner radius of the fuel cladding.
+These cracks, in addition to thermal expansion, lead to shear forces and hoop stress on the inner radius of the fuel cladding.
   
 In addition to the mechanical stress being exerted on the cladding, environmental contributions, chemical or geometrical in nature, have an adverse effect on the claddings integrity.
 Chemical environments arise from the release of fission products from the fuel pellet.
 Iodine and cadmium-in-cesium are considered to be the most corrosive fission products released from the pellet \cite{capps_evaluation_2016}. 
-In the presence of prolonged \gls{PCMI}, the corrosive chemical environment causes inter granular crack propagation, or \gls{SCC}, through the zircaloy based cladding.
-This type of cladding failure is commonly referred to as \gls{PCI}--\gls{SCC}, or "classical \gls{PCI}."
+In the presence of prolonged \gls{PCMI}, the corrosive chemical environment causes inter granular crack propagation, or \gls{SCC}, through the zircaloy-based cladding.
+This type of cladding failure is commonly referred to as \gls{PCI}--\gls{SCC}, or ``classical \gls{PCI}."
 
 Geometric contributions to \gls{PCI} are a result of irregularities in the fuel pellet shape.
-Typical \gls{LWR} fuel pellets are ceramic $UO_2$ cylinder with a height of approximately 1 cm and dishes and chamfers on the top and bottom of the pellet.
-Hundreds of these pellets are stacked into a single fuel, with approximately 60,000 fuel rods in a \gls{LWR} core.
+Typical \gls{LWR} fuel pellets are a ceramic $UO_2$ cylinder with a height of approximately 1 cm and dishes and chamfers on the top and bottom of the pellet.
+Hundreds of these pellets are stacked into a single fuel rod, with approximately 60,000 fuel rods in a \gls{LWR} core.
 The shear quantity of fuel pellets ordered by a utility makes it impossible for a fuel vendor to ensure no pellet has a defect.
-The most common defect is a \gls{MPS}, where part of the fuel pellet has chipped off during manufacturing.
-This chip causes asymmetric expansion of the pellet during power maneuvers, leading to an increased local stress on the fuel cladding \cite{capps_evaluation_2016}. 
-If the induced stress exceeds the yield stress of the cladding brittle failure is likely to occur.
+The most common defect is a \gls{MPS} where part of the fuel pellet has chipped off during manufacturing.
+This chip causes asymmetric expansion of the pellet during power maneuvers leading to an increased local stress on the fuel cladding \cite{capps_evaluation_2016}. 
+If the induced stress exceeds the yield stress of the cladding, brittle failure is likely to occur.
 This type of cladding failure is commonly referred to as \gls{PCI}-\gls{MPS}, as the missing surface is the critical feature in causing the failure.
 
 
@@ -220,27 +220,27 @@ Since then, \gls{PCI} has been extensively studied in order to increase the effi
 %First Paper
 %%%%%%
 Cox \cite{cox_pellet-clad_1990} performed an extensive review of the work done on zircaloy fuel failures caused by \gls{PCI} up to 1972.
-He found that fuel pellet geometry is the most significant factor in \gls{PCI}.
+It was found that fuel pellet geometry is the most significant factor in \gls{PCI}.
 The strain on the cladding is determined by
 \begin{enumerate}
 \item manufactured gap size
 \item shape of the fuel pellet
 \item effect of the chamfers and groves.
 \end{enumerate} 
-In addition to manufactured defects, ceramic $UO_2$ fuel pellets also experiences a number of geometric changes as a function of iradiation exposure and temperature/power level.
+In addition to manufacturing defects, ceramic $UO_2$ fuel pellets also experience a number of geometric changes as a function of iradiation and temperature/power level.
 These changes include, but are not limited to, fuel pellet  densification, cracking, relocation, and thermal expansion. 
 Pellet cracking and relocation contribute significantly to the strain experienced by the cladding due to the differential movement of the pellets relative to one another.
 This differential movement is further intensified  by the locking of crack edges into cracks within the cladding and the local coefficient of friction between the pellet/cladding.
 At high exposure the coefficient of friction can approach infinity as fission products have escaped the fuel pellet and cemented the pellet to the cladding, leading to intensified stresses during power maneuvers. 
 
-In addition to the contribution the fuel pellet geometry has on the local strain, the cladding material and geometry determine how the cladding will respond to such strain.
-The wall thickness to diameter ratio and creep rate of the cladding effect the magnitude of the initial stress and the rate at which the stress decays.
-The total stress imposed on the cladding is a function of the maximum power, which determines the total expansion of the fuel pellet, and the change in power during a power ramp, which determines the increment in cladding strain.
+In addition to the contribution the fuel pellet geometry has on the local strain, the cladding material and geometry can determine how the cladding will respond to such strain.
+Both the wall thickness to diameter ratio and creep rate of the cladding effect the magnitude of the initial stress and the rate at which the stress decays.
+The total stress imposed on the cladding is a function of the maximum power, which determines the total expansion of the fuel pellet, and also the change in power during a power ramp, which determines the increment in cladding strain.
 Cox goes on to highlight the importance of a corrosive agent at causing \gls{PCI}, noting that Iodine and Cadmium-in-Cesium are the largest contributors to the corrosive environment at the cladding surface.
 To minimize the risk of \gls{PCI}, Cox emphasized the importance of fuel conditioning and holds at intermediate power during large power ramps.
 
 The term fuel conditioning is commonly used by researchers and industry representatives when discussing power maneuvers, yet the quantitative definition of conditioning can be difficult to find.
-Capps et al. describe fuel condition as the state of the fuel rod when considering the changes in the fuel, cladding and gap \cite{capps_evaluation_2016}.
+Capps et al. described fuel condition as the state of the fuel rod when considering the changes in the fuel, cladding and gap \cite{capps_evaluation_2016}.
 Many of these changes are a result of the pellet and cladding's response to radiation and heat transfer, for example
 \begin{itemize}
 \item fuel pellet cracking and relocation are caused by the thermal expansion of $UO_2$,
@@ -250,8 +250,9 @@ Many of these changes are a result of the pellet and cladding's response to radi
 \item and creep deformation in the pellet and the cladding occur due to elevated temperatures and radiation exposure.
 \end{itemize}
 Due to the fact that all of these changes are dependent on the local power and exposure, a concrete definition of fuel conditioning is difficult to create.
-Rather, fuel conditioning describes the ability of the fuel rod to responds to rapid changes in power \cite{capps_evaluation_2016}.
-During conditioning the cladding is able to relieve some of thee stress experienced during a power increases while also influencing the chemical environment at the surface of the pellet \cite{cox_pellet-clad_1990}.
+Rather, fuel conditioning describes the ability of the fuel rod to respond to rapid changes in power \cite{capps_evaluation_2016}.
+During conditioning the cladding is able to relieve some of the stress experienced during a power increases.
+The chemical environment at the surface of the pellet is also influenced during the conditioning period \cite{cox_pellet-clad_1990}.
 Together these effects reduce the propagation of cracks, limiting the possibility of \gls{PCI} induced fuel failure.
 %%%%%%
 
@@ -259,7 +260,7 @@ Together these effects reduce the propagation of cracks, limiting the possibilit
 %Second Paper
 %%%%%%
 Jernkvist \cite{jernkvist_model_1995} developed a model for predicting \gls{PCI} induced fuel failure based on crack initiation and growth.
-Jernkvist model stressed three key parameters involved in \gls{PCI},
+Jernkvist's model stressed three key parameters involved in \gls{PCI},
 \begin{itemize} 
 \item cladding stress and strain are extremely localized, 
 \item fuel rod failure due to \gls{PCI} is normally a result of a sudden power increase 
@@ -273,10 +274,10 @@ If the stress was greater than the iodine stress corrosion crack threshold, the 
 To simplify the determination of the iodine concentration, a correlation was used based on the power and fuel burnup.
 It was then assumed that all of the iodine collects at the pellet-pellet interface and radial pellet cracks.
 
-With the velocity of the crack propagation known the time to cladding failure can be calculated.
+With the velocity of the crack propagation known, the time to cladding failure can be calculated.
 Using an artificial power history, Jernkvist provides an example where the coefficient of friction is varied for the pellet-clad interface.
-At sufficiently high coefficients of friction, the local stress on the cladding is high enough to grow the crack through the cladding.
-This demonstration shows the importance of accurately determining the stress within the cladding when trying to predict cladding failure.
+At sufficiently high coefficients of friction, the local stress on the cladding is high enough to grow the crack through the cladding, i.e. cause fuel failure.
+Jernkvist's study shows the importance of accurately determining the stress within the cladding when trying to predict cladding failure.
 Additionally, it highlights the need for a coupled multiphysics approach as the coefficient of friction at the pellet-clad interface is a function of temperature and burnup.
 %%%%%%
 
@@ -288,13 +289,13 @@ FALCON is a fully coupled, thermo-mechanical, two dimensional finite element com
 Building on the material properties provided in MATPRO, FALCON has the ability to simulate $UO_2$ pellet relocation, fission gas release and zircaloy cladding thermal creep.
 
 FALCON has been extensively benchmarked and is commonly used by contractors and utilities to mitigate the risk of \gls{PCI} induced fuel failure.
-Lyon et al. \cite{lyon_pci_2009} used FALCON in order to determine a criteria for mitigating \gls{PCI} induced fuel failure during power ramps.
+Lyon et al. \cite{lyon_pci_2009} used FALCON  to determine a criteria for mitigating \gls{PCI} induced fuel failure during power ramps.
 The authors point out that power ramp rate restrictions, which are normally set by fuel vendors, and fuel conditioning are not reliable at mitigating the risk of \gls{PCI}. 
-Rather, these practices lead to restrictive constraints on plant operation.
+Instead, these practices lead to restrictive constraints on plant operation.
 
-Another criteria that is commonly suggested by fuel vendors is the implementation of a stress based threshold.
+Another criteria that is commonly suggested by fuel vendors is the implementation of a stress-based threshold.
 Unfortunately, stress based thresholds are normally unable to distinguish between failed and non failed fuel rods, leading to a conservative threshold when applied to power maneuvers \cite{lyon_pci_2009}.
- Lyon et al, proposes a mechanistic approach that incorporates \gls{PCMI} and \gls{SCC} based cumulative damage.
+ Lyon et al. proposes a mechanistic approach that incorporates \gls{PCMI} and \gls{SCC} based cumulative damage.
 
 Similar to Jernkavist,  Lyon et al. recognized that cladding failure due to \gls{SCC} occurs in two stages, crack incubation and crack propagation.
 The \gls{CDI} model in FALCON accounts for both of these stages using a cumulative damage process, where damage accumulation is linear with time.
@@ -307,17 +308,17 @@ The time-to-failure of a material is normally measured in an \gls{SCC} out-of-pi
 \begin{equation}
 \bar{t} = f(\sigma,\sigma_y,\sigma_{ref},B,T)
 \end{equation}
-where $\sigma$ is the applied hoop stress, $\sigma_y$ is the materials yield strength, $\sigma_{ref}$ is burnup dependent function, $B$ is the burnup of the fuel, and $T$ is the temperature.
+where $\sigma$ is the applied hoop stress, $\sigma_y$ is the materials yield strength, $\sigma_{ref}$ is a burnup dependent function, $B$ is the burnup of the fuel, and $T$ is the temperature.
 It is important to note that Equation \ref{eqn:paper_3_eqn_1} only applies to a single power maneuver, therefore $D$ must be summed over all power maneuvers. 
-Experience has shown that $D$ exhibits logarithmic behavior with stress, therefore it should be interpreted probabilistically, where $D=1$ represents a 50\% failure probability while $D=0.1$ and $D=10$ imply a $<5$\% and $>59$\% failure probability.
+Experience has shown that $D$ exhibits logarithmic behavior with stress, therefore it should be interpreted probabilistically, where $D=1$ represents a 50\% failure probability while $D=0.1$ and $D=10$ imply  $<5$\% and $>59$\% failure probability, respectively.
 In order to account for the possibility that cladding stress can drop below the \gls{SCC} threshold during ramps and environmental difference can arise between in-pile and out-of-pile fuel rods, an adjustable single valued parameter $\beta$ is introduced to the \gls{CDI} model. 
 \begin{equation}
 D = \sum \frac{\delta t_i}{\beta \bar{t_i}}
 \end{equation}
 
-In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the Studsvik Over Ramp, Super Ramp and Trans Ramp IV program, as well as, rods from a CEA/OSIRIS ramp program using FALCON \cite{killeen_experimental_2004}. 
+In order to demonstrate the accuracy of a \gls{CDI} based criteria, Lyon et al. simulated 14 fuel rods from the Studsvik Over Ramp, Super Ramp and Trans Ramp IV program as well as rods from a CEA/OSIRIS ramp program using FALCON \cite{killeen_experimental_2004}. 
 These simulations were broken into three parts, first a steady state two dimensional, R-Z, depletion simulation is performed using the power histories of each rod.
-The results of these simulations are then used as the initial condition for transient R-Z simulations of the different power ramps under investigation.
+The results of these simulations are then used as the initial conditions for transient R-Z simulations of the different power ramps under investigation.
 Finally, an R-$\theta$ model containing discrete fuel cracks is created for the axial location which experienced the highest R-Z hoop stress.
 This simulation provides the fuel pins maximum clad hoop stress and \gls{CDI} which can then be used to determine a failure threshold criteria.
 
@@ -329,7 +330,7 @@ Using the results of all 14 fuel rods, the authors established a statistical fai
 A 550 MPa maximum clad hoop stress  and a \gls{CDI} of 5.85 were determined to signify a 50\% chance of rod failure.
 Using the 50\% chance as a hard cut off between non-failed and failed rods, the authors evaluated how each of the criteria performed using the 14 fuel rods.
 The peak stress was able to correctly predict the behavior of eight out of the 14 fuel rods while the \gls{CDI} predicted the behavior of 13 out of the 14 rods.
-Although this work does show the superiority of a \gls{CDI} based criteria, the training set and validation set are the same set which is considerably small.
+Although this work does show the superiority of a \gls{CDI} based criteria, the training set and validation set are the same set, in addition the set is considerably small.
 Additionally, the power ramps used during the test program are extreme and are unlikely to be performed during standard operation or load-follow operation.
 As a result, further validation is needed before deciding if a \gls{CDI} based criteria is reliable.
  
@@ -355,22 +356,22 @@ Although BISON is capable of computing \gls{CDI}, the authors only report the fa
 The results of both the R-$\theta$ and the three dimensional simulations were consistent with the results presented by Lyon et al.
 The authors observed that the hoop stress calculated in the three dimensional study was consistently higher than the hoop stress from the R-$\theta$ study.
 This signifies the importance the pellet's height has on the cladding stress.
-Although the three dimensional stress was elevated no clear cutoff was observed to distinguish the failed fuel rods from the intact fuel rods.
+Although the three dimensional stress was elevated, no clear cutoff was observed to distinguish the failed fuel rods from the intact fuel rods.
 For this reason, a statistical approach was developed for both the R-$\theta$ and the three dimensional simulations.
 
 Using the same four step methodology, the authors performed fuel performance simulations on several fuel rods from the commercial \gls{PWR}.
 Two different cycle startup ramps were investigated; the first cycle contained three failed fuel rods and the second contained a single failed fuel rod.
 The power histories for the R-Z depletion were provided by Westinghouse and are assumed to be from a nodal core simulator.
-Before analyzing any of the BISON results the authors observed important characteristics from the fuel rods power histories.
+Before analyzing any of the BISON results, the authors observed important characteristics from the fuel rods' power histories.
 Two of the failed rods in the first cycle were exposed to aggressive linear heat rates during their initial cycle.
-This led to the rods accumulating high burnups and  closing of the gap.
+This led to the rods accumulating high burnups and the closing of the pellet-clad gap.
 The third failed rod saw a significant increase in its linear heat rate after its initial cycle.
 As noted in the previous works, these characteristics are strong indicators of each rod's conditioning.
 
 In order to account for the change in cladding material, zirc4 in the Studsvik tests, zirlo in the commercial reactor, Capps et al. scaled the 5\% failure thresholds to 395 MPa for the R-$\theta$ and 446 MPa for the three dimensional predictions.
 The peak cladding hoop stress for all three of the failed rods was predicted to be below the threshold in both simulations.
 Additionally, two of the non-failed rods that were predicted to have peak cladding hoop stress above the threshold. 
-This led the authors to conclude that "classical" \gls{PCI} could not be the cause of the failure.
+This led the authors to conclude that ``classical" \gls{PCI} could not be the cause of the failure.
 After introducing a \gls{MPS} to each of the simulated rods, all peak cladding hoop stresses fell above the 5\% failure threshold.
 Furthermore, one of the fuel rods was confirmed to have a \gls{MPS} during a \gls{PIE}, confirming the predictions of the simulation.
 
@@ -384,7 +385,7 @@ Fuel specifications limit the dimension of a \gls{MPS} to 60 mils, but widths up
 For this reason, \gls{MPS} with lengths ranging from 60 to 140 mils were simulated using 2D and 3D BISON simulations. 
 The hoop stress resulting from a \gls{MPS} is a result of pellet thermal expansion. 
 As the pellet expands the missing face does not exert an outward force on the cladding, causing the cladding to bend at the edges of the \gls{MPS}.
-In 2D simulations the hoop stress increases linearly with the length of the \gls{MPS}, with a widths of 110 mils increasing the probability of failure to 50\%.
+In 2D simulations the hoop stress increases linearly with the length of the \gls{MPS}, with a width of 110 mils increasing the probability of failure to 50\%.
 These simulations are inherently flawed as adiabatic boundary conditions are applied to the top and bottom the fuel slice, resulting in the limitation that heat must be conducted radially.
 As the missing pellet surface grows, the heat transfer across the gap degrades leading to an increase in pellet temperature.
 This increase in temperature causes the pellet to continue to swell, exerting additional pressure on the cladding.
@@ -414,15 +415,15 @@ This suggests that the crack will continue to propagate until it has reached app
 
 In most cases, \gls{MPS} are accompanied by cracks.
 This makes it necessary to incorporate pellet cracks when determining the effect of \gls{MPS}.
-Unlike pellet cracks, \gls{MPS} cause hoop stresses within the clad through bending forces.
+Unlike pellet cracks, \gls{MPS} causes hoop stresses within the clad through bending forces.
 This hoop stress shows a saturation as the \gls{MPS} width increases.
-In addition to the width of the \gls{MPS}, the shape of the defect has a strong effect the maximum hoop stress.
+In addition to the width of the \gls{MPS}, the shape of the defect has a strong effect on the maximum hoop stress.
 It is typical to simulate \gls{MPS} as flat defects, although it is more likely they will be concave in shape. 
 This concavity further reduces the pellet-gap conductivity causing a rise in the fuel temperature and an increase in the maximum hoop stress.
 
-Although 2D simulations are useful in determining the effect of fuel cracks and \gls{MPS}, they are inherently flawed as much of the axial effects are lost in the boundary conditions.
-In addition to the loss of heat transfer in the axial direction, structural support is not taken into consideration as the \gls{MPS} has an infinite hight.
-Unfortunately, three dimensional contact makes the simulation of cracks and \gls{MPS} difficult, and prohibits a full length fuel rod from being simulated in three dimension. 
+Although 2D simulations are useful in determining the effect of fuel cracks and \gls{MPS}, they are inherently flawed as many of the axial effects are lost in the boundary conditions.
+In addition to the loss of heat transfer in the axial direction, structural support is not taken into consideration as the \gls{MPS} has an infinite height.
+Unfortunately, three dimensional contact makes the simulation of cracks and \gls{MPS} difficult, and prohibits a full length fuel rod from being simulated in three dimensions. 
 To work around this, Capps et al. simulated a stack of five discrete fuel pellets with a \gls{MPS} included in the center fuel pellet.
 The results of the three dimensional study showed that axial contributions reduce the maximum cladding hoop stress by 7 to 15 \%.
 Although this reduction is significant, the trends observed in the two dimensional studies did not change.
@@ -433,10 +434,10 @@ Therefore, fuel performance studies can be conducted in two dimensions as long a
 %Sixth Paper
 %%%%%%
 Knowing the statistical thresholds and the importance of cladding defects in regards to fuel failure, analysts can determine the risk of fuel failure for a given core power maneuver.
-Typically the initial ramp to full power is given the most attention but in the case of load-load follow operation all power maneuver will need to be analyzed to determine the risk of fuel failure.
-Unfortunately, it is far to computationally expensive to perform a \gls{PCI} focused fuel performance simulation for all of the rods within the core for each of the ramps under consideration.
+Typically the initial ramp to full power is given the most attention but in the case of load-load follow operation all power maneuvers will need to be analyzed to determine the risk of fuel failure.
+Unfortunately, it is far too computationally expensive to perform a \gls{PCI} focused fuel performance simulation for all of the rods within the core for each of the ramps under consideration.
 In order to reduce the number of simulations required most utilities or contractors will focus on a small number of assemblies within the core.
-Kennard et al. describes how to go about reducing the 193 fuel assemblies found in a commercial \gls{PWR} down to about 6 assemblies \cite{kennard_pci_2016}.
+Kennard et al. describes how to go about reducing the 193 fuel assemblies found in a commercial \gls{PWR} down to about 6 limiting assemblies \cite{kennard_pci_2016}.
 The screening process  looks to see if 1) an assembly has seen a significant power increase since its previous cycle, 2) exposure falls above a critical value, and 3) the ratio of the maximum power to the conditioned power is large.
 Typically a core simulator will provide the predicted pin powers, which are needed to screen the power maneuver.
 The assemblies selected are then considered the limiting assemblies for the power maneuver and are analyzed using a fuel performance simulator.
@@ -447,13 +448,13 @@ The pins within the limiting fuel assemblies were analyzed using FALCON and the 
 Based on the 1\% failure threshold for a FALCON fuel performance simulation, Kennard et al. made recommendations to mitigate the risk of \gls{PCI} induced fuel failures for a number of generic operating conditions.
 Two recommendations are made in regards to load-follow operation, the first being the importance of maintaining \gls{AO} control.
 During a return to full power maneuver, the local xenon concentrations and moderator temperature coefficient will cause the core \gls{AO} to swing.
-If the \gls{AO} swing is significant enough local power levels may exceed conditioned power levels causing a sudden expansion of the fuel pellet.
+If the \gls{AO} swing is significant, enough local power levels may exceed conditioned power levels causing a sudden expansion of the fuel pellets.
 Strong control over the \gls{AO} will reduce this risk, mitigating the chance of fuel failure.
 The second recommendation is better described as a warning.
 Kennard et al. warn that local power uncertainties can increase the stress experienced during returns to full power after a reduced power hold.
 This recommendation highlights the importance of accurately knowing local power at the pin cell level.
 Many core simulators would use a nodal core simulator and pin power reconstruction to calculate the pin power as a function of time.
-This reconstruction is likely to introduce uncertainty in the pin powers leading to uncertainty in the fuel performance results.
+This reconstruction is likely to introduce uncertainty in the pin powers leading to an increased uncertainty in the fuel performance results.
 
 In this work, \gls{VERACS} is used to simulate load-follow operation of a commercial \gls{PWR}.
 \gls{VERACS} is capable of accurately predicting pin powers allowing for reduced uncertainty in fuel performance results.
@@ -472,9 +473,9 @@ In closing, the conclusions drawn from this work and possible future extensions 
 \chapter{PWR1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The \gls{UIUC} partnered with \gls{CASL} to investigate load-follow operations in a PWR. 
+The \gls{UIUC} partnered with the \gls{CASL} to investigate load-follow operations in a PWR. 
 The objective of the work was to investigate the effects of load-follow operation specific to an operating PWR. 
-At request of the owner, the reactor chosen was not to be disclosed, but it will be referred to as PWR1.
+At request of the owner, the reactor chosen was not to be disclosed but it will be referred to as PWR1.
 PWR1 was chosen due to the significant load-follow maneuvers that occurred during operating cycle 21. 
 To provide an accurate power history and isotopic composition for the load-follow operation during cycle 21, it was decided that a jump-in depletion would be performed starting four cycles earlier, i.e. cycle 17. 
 This decision is due to core loading patterns that include assemblies shuffled from two cycles prior (e.g. cycle 21 includes assemblies introduced in cycle 19, whereas cycle 19 includes assemblies introduced in cycle 17). 
@@ -614,7 +615,7 @@ As an alternative, the simulations is conducted with a constant $^{10}$B enrichm
 \end{figure} 
 
 The measured boron concentrations were used to establish the accuracy of the core reactivity vs. fuel burnup. 
-The boron "letdown" is compared for cycles 19-21 in Figure \ref{fig:cor_b}. 
+The boron ``letdown" is compared for cycles 19-21 in Figure \ref{fig:cor_b}. 
 Figure \ref{fig:cor_b} contains a comparison of the corrected measured boron concentration with the MPACT simulation. 
 As shown in Figure \ref{fig:cor_b}, the difference between corrected measured and simulated critical boron concentration varies between -40 ppm at the beginning of cycle to +20 ppm at the end of the cycle. 
 The cause of this reactivity swing is believed to be the temperature tables used to determine the fuel's temperature as a function of burnup and linear heat rate.
@@ -627,7 +628,7 @@ Regardless, the difference is within 50 ppm for each cycle depletion, which is c
 
 After further review of the test stand's depletion results, it was determined that the \gls{UIUC} model of PWR1 displayed sufficient agreement with plant measured data. 
 In addition to cycle depletion, hourly depletion simulations were performed for the first month of plant operation.
-During this time period, a total of 5 power maneuvers were performed, varying the plants power output between 100 \% and 70 \%.
+During this time period, a total of 5 power maneuvers were performed, each varying the plant's power output between 100\% and 70\%.
 During the \gls{VERACS} simulations the exact reactor power, control rod position, and moderator inlet temperature were modeled using hourly depletion steps.
 A graphical representation of the power histories, can be found in Figure \ref{fig:lf_his0}.
 
@@ -638,19 +639,22 @@ A graphical representation of the power histories, can be found in Figure \ref{f
 \caption{PWR1 power history during the first 20 days of plant operation}
 \label{fig:lf_his0}
 \end{figure}
-\begin{figure}[h]
-\begin{center}
-\includegraphics[height=4in]{./Figures/M_AO.pdf} 
-\end{center}
-\caption{PWR1 hourly \gls{AO} comparison during the first 20 days of plant operation}
-\label{fig:lf_his1}
-\end{figure}
+
+
 \begin{figure}[h]
 \begin{center}
 \includegraphics[height=4in]{./Figures/M_boron.pdf} 
 \end{center}
 \caption{PWR1 hourly critical boron concentration  comparison  during the first 20 days of plant operation}
 \label{fig:lf_his2}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[height=4in]{./Figures/M_AO.pdf} 
+\end{center}
+\caption{PWR1 hourly \gls{AO} comparison during the first 20 days of plant operation}
+\label{fig:lf_his1}
 \end{figure}
 
 In order to validate the MPACT simulation, the critical boron was calculated during the load-follow simulation. 
@@ -661,8 +665,8 @@ It is observed in Figure \ref{fig:lf_his2} that the MPACT predict boron response
 The comparison of the MPACT predict \gls{AO} and the plant estimated \gls{AO}, shown in Figure \ref{fig:lf_his1}, allows for several conclusions to be drawn about the MPACT simulation.
 At times when power is decreased, both the MPACT and plant \gls{AO} are observed to increase.
 This behavior is expected as the moderator temperature coefficient should push power towards the top of the core as power is decreased.
-Unfortunately the MPACT predictions over estimate the magnitude of the positive swing.
-This overestimation could be a result of the temperature tables used in the simulation or the under predicted control bank worth.
+Unfortunately, the MPACT predictions overestimate the magnitude of the positive swing.
+This overestimation could be a result of the temperature tables used in the simulation or the underi predicted control bank worth.
 Additionally, sinusoidal oscillations in the MPACT \gls{AO} are observed during times of constant power following a power maneuver.
 These oscillations are not observed in the plant data but their magnitude is negligible as they are less then 1 \% from peak to peak.
   
@@ -679,10 +683,10 @@ The detailed pin level data that is available from the \gls{VERACS} results allo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The main focus of this work is to predict the limiting pin within a commercial \gls{PWR} during load-follow power maneuvers.
 Due to the stochastic nature of \gls{PCI} induced fuel failure and the randomness of pellet defects throughout the core, determining a single pin out of the approximately 60,000 present is unrealistic.
-Instead, it is desired that ~1000 of the fuel pins be selected and analyzed using the three step process outlined by Lyon et al. \cite{lyon_pci_2009}.
-Similar to the assembly based screening process developed by Kennard et al., the pin based screening process will look at characteristics indicating the fuels conditioning.
+Instead, the top 1000 most likely limiting fuel pins are selected to be analyzed using the three step process outlined by Lyon et al. \cite{lyon_pci_2009}.
+Similar to the assembly based screening process developed by Kennard et al., the pin based screening process will look at characteristics indicating the fuel's conditioning.
 In order to determine the validitiy of this screening process, all fuel pins contained within the quarter core \gls{VERACS} model will simulated using the BISON fuel performance code.
-In the following sections the procedure for selecting the 1000 fuel pins and a description of the BISON fuel performance code are be presented.
+In the following sections the procedure for selecting the 1000 fuel pins and a description of the BISON fuel performance code are presented.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{MPACT Screening Process}
@@ -694,27 +698,27 @@ To quantify the risk of \gls{PCI} induced fuel failure, a weighted change in lin
 \begin{equation}
 R_{i,j,k}^{t} = \frac{\left( lhr_{i,j,k}^t-lhr_{i,j,k}^{t_{con}}\right)}{lhr_{i,j,k}^{t_{con}}} b_{i,j,k}^t \cdot lhr_{i,j,k}^{t}
 \end{equation}
-where $lhr$ and $b$ are the MPACT predicted linear heat rate and burnup for fuel pin ($i$,$j$) at the axial location $k$ and time $t$, respectively.
+where $lhr$ and $b$ are the MPACT predicted linear heat rate and burnup, respectively, for fuel pin ($i$,$j$) at the axial location $k$ and time $t$.
 For cycle start-up ramps, the conditioned power is taken as the linear heat rate a shuffled fuel rod experienced at the end of the previous cycle, $lhr_{i_{prev},j_{prev},k}^{t_{end}}$.
 During a load-follow operation, the conditioned power is taken to be the linear heat rate experienced while operating at full power before the maneuver began, $lhr_{i,j,k}^{t_{con}}$.
 For example, in Figure \ref{fig:lf_his0} the linear heat rates calculated at hour 175 are assumed to be the conditioned linear heat rates for the following two power maneuvers, $t_{con}=175$. 
 
 The weighted change in linear heat rate accounts for all parameters that effect \gls{PCI}.
-The relative change from conditioned power determines if elevated stress are being applied on the cladding's inner surface.
+The relative change from conditioned power determines if elevated stress is being applied on the cladding's inner surface.
 Positive changes suggest that the fuel pellet has expanded, applying a tensile hoop stress on the cladding.
-Negative changes suggest that the fuel pellet has contracted, and fuel failure is unlikely.
+Negative changes suggest that the fuel pellet has contracted and fuel failure is unlikely.
 In the presence of a closed gap, the thermal expansion of the fuel pellet will cause elevated stresses on the cladding.
-Due to the fact that gap width is a complex function of power history, the fuel's linear heat rate and burnup are used to determine the likelihood the gap has closed.
+Due to the fact that gap width is a complex function of power history, the fuel's linear heat rate and burnup are used to determine the likelihood that the gap has closed.
 When the fuel's burnup and linear heat rate are high it is unlikely that the gap is open.
 Additionally, the fuel's burnup suggests the presence of fission products on the clads inner surface.
-When multiplied, these three parameters indicated the fuel rods that are under elevated stress and have the potential to fail due to \gls{PCI}.
+When multiplied, these three parameters indicate the fuel rods that are under elevated stress and have the potential to fail due to \gls{PCI}.
 
 An important factor to consider is the effect prolonged load follow operation will have on the fuel's response.
 The degradation of the conditioned power, or the fuel deconditioning, is not well understood.
 The primary change in the fuel rod during deconditioning is a reduction of the cladding inner diameter.
 Cladding creep down, which is dependent on temperature, irradiation history, and applied stress, is the primary mechanism responsible for the reduction.  
 For cycle start-up ramps, where the cladding and fuel rods are stored at reduced temperatures, deconditioning can be neglected. %maybe have a reference for this
-During extended periods of low power operation, where the cladding is exposed to elevated temperatures and stresses, it is possible that the cladding creep rate is not negligible.
+On the other hand during extended periods of low power operation where the cladding is exposed to elevated temperatures and stresses, it is possible that the cladding creep rate is not negligible.
 Therefore the conditioned power level could be a function of time spent at reduced power.
 A previous study \cite{galrtner_survey_1987} suggests that multiple power ramps have no effect on the conditioned power level of the fuel rod.  
 However, the results presented by Stimpson \cite{stimpson_demonstration_2017} on continuous load-following for a single fuel pin suggest that changes in burnup have a strong effect on the maximum clad hoop stress.
@@ -729,7 +733,7 @@ As a result, it is assumed that fuel deconditioning does not occur during load-f
 The BISON fuel performance code is developed by \gls{INL} to provide single-rod fuel performance modeling capability to assess best-estimate values of design and safety criteria. 
 BISON is built on \gls{INL}'s \gls{MOOSE} package \cite{gaston_moose:_2009}, which uses the finite element method for geometric representation and a Jacobian Free Newton-Krylov (JFNK) scheme to solve systems of partial differential equations \cite{williamson_multidimensional_2012}. 
 Three primary differential equations are implemented in BISON to determine the response of a nuclear fuel rod to changes in  power.
-These equation describe the conservation of energy, momentum, and species, which are defined by,
+These equations describe the conservation of energy, momentum, and species, which are defined by,
 \begin{equation} \label{eqn:bis_eng}
 \rho C_p \frac{\partial T}{\partial t} + \nabla \cdot \vec{q} - e_f \dot{F} =0
 \end{equation} 
@@ -753,17 +757,17 @@ Although a 10\% error at elevated fuel temperatures, $\pm$90 $^\circ$C at 900 $^
 This implies that a portion of the error can be contributed to measurement uncertainties, thus the 10\% error is considered quite accurate.
 Fission gas release predictions are typically within a factor of two of the measured values.
 This agreement is considered within the range of measurement error and is common among many fuel performance simulators.
-Although fission gas release and fuel temperature show good agreement with measured quantities, rod diameter tends to be under predicted at \gls{BOL} and over predicted at \gls{EOL}.
+Although fission gas release and fuel temperature show acceptable agreement with measured quantities, rod diameter tends to be under predicted at \gls{BOL} and over predicted at \gls{EOL}.
 This discrepancy is believed to be caused by a lack of a relocation recovery model.
 Nonetheless, BISON has been shown to capture complex thermo-mechanical behavior such as PCI failures in PWRs \cite{montgomery_advanced_2014,capps_pci_2017}.
 
 \gls{CASL} has developed a methodology to perform fuel performance simulations for all fuel rods simulated using \gls{VERACS}.
 The methodology relies on a template input file and a parser.
 Fuel performance calculations can be run coupled with \gls{VERACS}, inline with \gls{VERACS} or standalone.
-In this work fuel performance calculations are run standalone using a 1.5D template.
+In this work, fuel performance calculations are run standalone using a 1.5D template.
 This means that the linear heat rate and coolant temperature predicted using \gls{VERACS} are applied as boundary conditions for the BISON calculations.
 Unlike an RZ simulation, the 1.5D template neglects axial conduction within the fuel rod.
-Rather, a stack of 1D pellets are coupled using a common plenum pressure.  
+Rather, a stack of smeared 1D pellets are coupled using a common plenum pressure.  
 This geometric configuration has been shown to significantly reduce the computational time required for each power ramp \cite{gardner_review_2017}.
 Due to the fact that the RZ simulation commonly used for standalone BISON calculations uses a smeared pellet mesh, where individual pellets are not explicitly modeled, the 1.5D results are expected to have consistent predictions.
 In a standard \gls{PCI} screening process, the results of RZ fuel performance simulation are used to select the axial location for a R-$\theta$ simulation.
@@ -779,10 +783,10 @@ Therefore, with consistent boundary conditions between the RZ and 1.5D simulatio
 \chapter{Results and Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Using the results of the load-follow and  cycles depletion simulations, stand-alone bison inputs were created for all fuel pins contained within cycle 21. 
-These inputs modeled each pins detailed power history, which accounted for core shuffling and cycle outages. 
+Using the results of the load-follow and  cycle depletion simulations, stand-alone bison inputs were created for all fuel pins contained within cycle 21. 
+These inputs modeled each pin's detailed power history, which accounted for core shuffling and cycle outages. 
 %An example of a shuffled pins power history is shown in Figure \ref{fig:single_pin}, where the pin was present towards the center core during cycles 19 and 20, and was then moved to the periphery of the core during cycle 21. 
-Of the 14,784 found in the quarter core model of cycle 21, all but approximately 150 fuel pins ran to completion.
+Of the 14,784 pins found in the quarter core model of cycle 21, all but approximately 150 fuel pins ran to completion.
 After adjusting a radial biasing parameter within BISON, the 150 fuel pins ran to completion.
 This biasing parameter causes the fuel pin's simulated power output to exceed the specified input power.
 As a result, many of the parameters of interest, i.e. burnup, hoops stress, and gap thickness, may be overestimated.
@@ -792,7 +796,7 @@ Nonetheless, the maximum clad hoop stress within these pins is similar to the su
 In the remaining sections the BISON fuel performance and MPACT screening results for the first 20 days of operation are presented.
 The BISON fuel performance results are broken into two sections, the initial power ramp, and the load-follow operation.
 The MPACT screening results follow the same format but the initial power ramp is not considered. 
-Core designers spend a significant amount of time looking at the initial power ramp, therefor it is assumed a well accepted screening process has already been developed for the initial ramp.
+Core designers spend a significant amount of time looking at the initial power ramp, therefore it is assumed a well accepted screening process has already been developed for the initial ramp.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{BISON}
@@ -803,7 +807,7 @@ Core designers spend a significant amount of time looking at the initial power r
 Of the various quantities BISON calculates, two were chosen and plotted using VERAView \cite{lee_veraview_2016}.
 Figures \ref{fig:bison_initial} through \ref{fig:bison_PR5} show the results for the maximum clad hoop stress (top), and the minimum fuel-clad thickness (bottom), at different times of operation. 
 The BISON predicted clad damage index of all fuel pins during the load-follow power maneuvers was zero, for this reason it not displayed.
-It should be noted that all of the figure only contain radial information as the collection of the three dimensional results is unavailable at this time. 
+It should be noted that all of the figures only contain radial information as the collection of the three dimensional results is unavailable at this time. 
 For reference, the relative core power is plotted to the right of each result, within this plot a red vertical line is used to indicate the time of the calculation.
 
 From Figure \ref{fig:bison_initial}, useful information about the state of the fuel at \gls{BOC}  can be interpreted. 
@@ -819,8 +823,8 @@ Due to the fact that fresh fuel assemblies have not closed the gap, the pressure
 \gls{PCI} induced fuel failure is a result of a tensile force, therefore compressive forces can be neglected.
 The maximum clad hoop stress was observed in assembly H-13, pin (5,13), circled in black in Figure \ref{fig:bison_initial}. 
 At 94.1 MPa, the pressure exerted on the cladding is relatively low. 
-The 5\% failure threshold determined by Capps et al is 395 MPa for the two dimensional BISON rod, more then 3 times the pressure observed \cite{capps_pci_2017}.
-It should also be considered that the 1.5D model neglects axial conduction, which will lead to an over prediction of the fuel temperature causing elevated hoop stresses.
+The 5\% failure threshold determined by Capps et al. is 395 MPa for the two dimensional BISON rod, more then 3 times the pressure observed \cite{capps_pci_2017}.
+It should also be considered that the 1.5D model neglects axial conduction, which will lead to an over prediction of the fuel temperature, causing elevated hoop stresses.
 The low maximum clad hoop stress observed is anticipated as the initial power maneuver is carefully planned to minimize the risk of fuel failure.
 The low pressure also indicates why the CDI was predicted to be zero, as BISON requires a 300 to 400 MPa hoop stress before clad damage can accumulate.
 
@@ -829,12 +833,13 @@ The low pressure also indicates why the CDI was predicted to be zero, as BISON r
 \subsection{Load-follow Power Maneuvers}
 
 The BISON predicted maximum clad hoop stress for all load-follow power maneuvers are presented in the lower half of Figures \ref{fig:bison_PR1} through \ref{fig:bison_PR5}.
-The maximum clad hoop stress during for each maneuver was observed to occur after the return to full power ramp.
+The maximum clad hoop stress  for each maneuver was observed to occur after the return to full power ramp.
 When the maneuver was followed by a constant power hold, ramps 2 through 6, the maximum occurred approximately 8 hours after full power had been achieved.
 This is believed to be caused by a xenon transient, which pushes the power away from the middle of the core.
-Although Figure \ref{fig:lf_his1} suggests that the simulation is out of phase and over predicting the plant response after most maneuvers, the BISON calculations are based on the simulation results, providing more conservative estimates of the behavior of the fuel.
+As seen in Figure \ref{fig:lf_his1}, the simulation is out of phase and over predicting the plant response after most maneuvers.
+Because the BISON calculations are based on the simulation results, the predicted fuel behavior is taken to be conservative.
 Similar to the initial power ramp, tensile hoop stress is only observed in shuffled fuel assemblies for all power maneuvers simulated.
-Due to the fact that only the first month of cycle operation was simulated, the fresh fuel assemblies do not experience significant change in gap width after full power has been achieved.
+Due to the fact that only the first month of cycle operation was simulated, the fresh fuel assemblies do not experience a significant change in gap width after full power had been achieved.
 Therefore the pressure differential is the dominant stress on the cladding and the fresh fuel assemblies can still be neglected.
 
 The maximum clad hoop stress for each power maneuver is listed in Table \ref{tab:MHS} and circled in black in Figures \ref{fig:bison_PR1} through \ref{fig:bison_PR5}. 
@@ -851,7 +856,7 @@ Additionally, no correlation is observed between the power decrease and maximum 
 The current trend in the maximum hoop stress after the initial start-up is proportional with the cycle exposure.
 It can be assumed that this trend is likely to continue as the cycle continues but the redistribution of power in the core could result in asymptotic behavior.
 Further investigation is required to determine the effect load-follow power maneuvers have towards the end of a cycle.
-Nonetheless, cladding hoop stress in the range of 95 MPa are well below the 5\% failure threshold and do not indicate a significant risk of early cycle load-follow power maneuvers. 
+Nonetheless, cladding hoop stresses in the range of 95 MPa are well below the 5\% failure threshold and do not indicate a significant risk of early cycle load-follow power maneuvers. 
 
 \begin{table}
 \caption{Maximum clad hoop stress for each load-follow power maneuver}
@@ -944,7 +949,8 @@ Nonetheless, cladding hoop stress in the range of 95 MPa are well below the 5\% 
 
 The weighted change in linear heat rate determined using the MPACT load-follow results are presented in Figures \ref{fig:lf_PR1} -- \ref{fig:lf_PR3}.
 In each figure, negative changes are masked in order to highlight the fuel rods of interest.
-Although the weighted change is a product of burnup, which is constantly increasing, and linear heat rate, local maxima were observed six to eight hours after a return to full power.
+%Although the weighted change is a product of burnup, which is constantly increasing, and linear heat rate,
+Local maxima were observed six to eight hours after a return to full power.
 Each maxima corresponds to the time when a local maximum was observed in the cladding max hoop stress.
 Unfortunately the fuel pin with the maximum weighted change in linear heat rate did not exhibit the maximum cladding hoop stress. 
 Nonetheless, 1000 fuel pins were selected from the quarter core results based on their weighted change in linear heat rates.
@@ -956,7 +962,7 @@ Although the weighted change in linear heat rate is able to capture the maximum 
 In the second core map several pins from two assemblies are only identified by the linear heat rate.
 These pins, which are in close proximity of the fresh fuel assemblies, are only experiencing hoop stresses in the range 40 MPa, less then half the maximum value.
 This suggests that the weighting by linear heat rate introduces a dependence on position.
-Fuel pins in close proximity to fresh fuel are likely to be selected by the screening process even though there change from conditioned power may be minimal.
+Fuel pins in close proximity to fresh fuel are likely to be selected by the screening process even though their change from conditioned power may be minimal.
 This effect is also observed in the other four core maps, as many of the pins only identified by the screening process are adjacent to fresh fuel.
 As the cycle continues the radial power distribution will flatten reducing the importance of the linear heat weighting.
 
@@ -977,7 +983,6 @@ Nonetheless, the objective of the screening process, contain the maximum claddin
 \end{figure}
 \end{landscape}
 
-
 \begin{landscape}
 \begin{figure}[h]
 \begin{tabular}{c}
@@ -988,7 +993,6 @@ Nonetheless, the objective of the screening process, contain the maximum claddin
 \label{fig:lf_PR2}
 \end{figure}
 \end{landscape}
-
 
 \begin{landscape}
 \begin{figure}[h]
@@ -1004,9 +1008,10 @@ Nonetheless, the objective of the screening process, contain the maximum claddin
 \begin{center}
 \begin{figure}[h]
 \begin{tabular}{lr}
+\multicolumn{2}{c}{Blue -- Screening process predicted limiting pin, Green -- BISON predicted limiting pin, Red -- Screening process and BISON predicted limiting pin,} \\
 \includegraphics[trim={0 0 4.5cm 0},clip,width=0.4\linewidth]{./Figures/screening/comp1.png} & \includegraphics[trim={0 0 4.5cm 0},clip,width=0.4\linewidth]{./Figures/screening/comp2.png} \\
 \includegraphics[trim={0 0 4.5cm 0},clip,width=0.4\linewidth]{./Figures/screening/comp3.png} & \includegraphics[trim={0 0 4.5cm 0},clip,width=0.4\linewidth]{./Figures/screening/comp4.png} \\
-\multicolumn{2}{c}{\includegraphics[trim={0 0 4.5cm 0},clip,width=0.4\linewidth]{./Figures/screening/comp5.png}} \\
+\multicolumn{2}{c}{\includegraphics[trim={0 0 4.5cm 0},clip,width=0.4\linewidth]{./Figures/screening/comp5.png}} 
 \end{tabular}
 \caption{Comparison of the 1000 fuel pins with this highest maximum clad hoop stress and the 1000 fuel pins with the highest weighted change in linear heat rate.}
 \label{fig:comp}
@@ -1021,7 +1026,7 @@ Nonetheless, the objective of the screening process, contain the maximum claddin
 In order to reduce the computational burden associated with ensuring safe operation of a \gls{PWR} during load-follow operation, a pin based screening process was developed.
 The screening process relied on the results of several \gls{VERACS} calculations, where PWR1 was simulated over a period of five cycles.
 Excellent agreement was observed between the PWR1 simulations and plant measured data.
-Although the predicted response showed an overestimation of the \gls{AO} swing following a power maneuver, MPACT linear heat rates were able to provide conservative boundary conditions for BISON fuel performance simulations.
+Although the predicted response showed an overestimation of the \gls{AO} swing following a power maneuver, the MPACT linear heat rates were able to provide conservative boundary conditions for BISON fuel performance simulations.
 A total of 6 power maneuvers, including the start-up power maneuver, were simulated using BISON to determine the limiting fuel pin for each maneuver.
 
 The BISON calculations provided valuable insight on the effect load-follow operation has on fuel rods early in the cycle.
@@ -1039,7 +1044,7 @@ For all load-follow power maneuvers simulated, the screening process was able to
 Additionally, the majority of the fuel pins selected by the screening process showed elevated maximum hoop stresses, although some fuel assemblies were wrongfully identified.
 The primary cause of the discrepancy between the screened pin and those that showed elevated maximum hoop stresses was concluded to be the weighting by the linear heat rate.
 Early in the cycle, the high linear heat rate of fresh assemblies causes adjacent fuel assemblies to also have elevated linear heat rates, skewing the weighting. 
-Later in the cycle, when the power profile of the core is flatter, the linear heat rate will not contribute significantly to the screening process preventing this discrepancy from occurring. 
+Later in the cycle, when the power profile of the core is flatter, the linear heat rate will not contribute significantly to the screeningi, process preventing this discrepancy from occurring. 
 Nonetheless, the pin-based screening process has proved successful in capturing the limiting pin following a load-follow power maneuver. 
 This capability allows for additional maneuvers to be simulated, pushing the power ramps into a more economic operating regime.
 
