@@ -1,10 +1,11 @@
 \def\fileversion{v1.0} \def\filedate{2018/07/20}
 %% Package and Class "uiucthesis2009" for use with LaTeX2e.
-\documentclass[edeposit,fullpage,11pt]{uiucthesis2009}
+\documentclass[edeposit,fullpage,11pt]{uiucecethesis09}
 \usepackage[acronym,toc]{glossaries}
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{pdflscape}
+
 \include{acros}
 \makeglossaries
 
@@ -14,11 +15,10 @@
        Operation in a Pressurized Water Reactor using VERA-CS}
 \author{Daniel John O'Grady}
 \department{Nuclear, Plasma, and Radiological Engineering}
-\schools{B.S., University of Illinois at Urbana-Champaign, 2017}
 \msthesis
 \advisor{Tomasz Kozlowski}
 \degreeyear{2018}
-\committee{Professor Tomasz Kozlowski, Advisor \\Professor Kathryn Huff}
+\committee{Associate Professor Tomasz Kozlowski, Advisor \\Assistant Professor Kathryn Huff}
 \maketitle
 
 \frontmatter
@@ -1002,15 +1002,14 @@ Nonetheless, the objective of the screening process, contain the maximum claddin
 
 \begin{landscape}
 \begin{figure}[h]
-\begin{tabular}{c}
+%\begin{tabular}{c}
 \includegraphics[trim={0 4cm 0 4cm},clip,width=\linewidth]{./Figures/screening/PR5.pdf} \\
-\end{tabular}
+%\end{tabular}
 \caption{Weighted change in linear heat rate for the fifth (top) load-follow power maneuver.}
 \label{fig:lf_PR3}
 \end{figure}
 \end{landscape}
 
-\begin{center}
 \begin{figure}[h]
 \begin{tabular}{ll}
 %\multicolumn{2}{c}{Blue -- Screening process predicted limiting pin, Green -- BISON predicted limiting pin, Red -- Screening process and BISON predicted limiting pi} \\
@@ -1035,7 +1034,6 @@ Nonetheless, the objective of the screening process, contain the maximum claddin
 \caption{Comparison of the 1000 fuel pins with this highest maximum clad hoop stress and the 1000 fuel pins with the highest weighted change in linear heat rate.}
 \label{fig:comp}
 \end{figure}
-\end{center}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Conclusions}
@@ -1079,6 +1077,7 @@ In order to further reduce the computational time required to simulate load-foll
 
 \backmatter
 \bibliographystyle{ans}
+%\bibliographystyle{IEEEtran}
 \bibliography{Masters}
 
 
